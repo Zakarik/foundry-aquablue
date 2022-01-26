@@ -71,6 +71,5 @@
   "primaryTokenAttribute": "energie",
   "url": "https://github.com/Zakarik/foundry-aquablue",
   "manifest": "https://github.com/Zakarik/foundry-aquablue/blob/main/system.json",
-  "download": "https://github.com/Zakarik/foundry-aquablue/archive/refs/heads/main.zip",
-  "license": "LICENSE.txt"
+  "download": "https://github.com/Zakarik/foundry-aquablue/archive/refs/heads/main.zip"
 }
