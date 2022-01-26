@@ -1,0 +1,748 @@
+@import "parts/functions";
+
+.aquablue {
+  .window-content {
+    background:none;
+    background-color:@white;
+  }
+
+  header.sheet-header {
+    flex:0;
+    align-items: flex-start;
+
+    .profile-img {
+      width:150px;
+      height:200px;
+      margin-right:5px;
+    }
+
+    h1.charname {
+      width:100%;
+      margin-bottom:5px;
+      flex:none;
+      
+      input {
+        width:100%;
+        text-align: center;
+        background: transparent;
+        border-radius: 0px;
+        border-top:0px;
+        border-right:0px;
+        border-left:0px;
+        margin:0px;
+        padding-top:20px;
+        font-weight:bold;
+      }
+    }
+  }
+
+  .description {
+    width:100%;
+    flex-wrap: wrap;
+    margin-bottom:20px;
+
+    .header-tTitle {
+      .header-tTitle;
+    }
+
+    div.editor {
+      width: 100%;
+      border: 1px solid black;
+      min-height: 100px;
+      padding-left:2px;
+      padding-right:2px;
+      text-align: justify;
+    }
+
+    div.tox-tinymce {
+      min-height:100px;
+    }
+  }
+}
+
+.actor {
+  header.sheet-header 
+  {
+    margin-bottom:5px;
+    
+    .aData {
+      height:100%;
+  
+      .header-fields {
+        align-self: flex-start;
+  
+        .cData,
+        .resource {
+          display:flex;
+          justify-content: space-between;
+          align-items: flex-end;
+  
+          input,
+          select {
+            width:100%;
+            border-bottom:1px dashed black;
+            border-top:0px;
+            border-right:0px;
+            border-left:0px;
+            border-radius: 0px;
+            background: transparent;
+            padding-top:10px;
+  
+            &[type="number"] {
+              text-align: center;
+            }
+          }
+  
+          &:not(:first-of-type) {
+            margin-top:5px;
+          }
+        }
+  
+        .biography {
+          width:100%;
+          flex-wrap: wrap;
+  
+          >div {
+            width: 100%;
+            border: 1px solid black;
+            min-height: 50px;
+          }
+        }
+  
+        .header-lTitle {
+          margin-right:5px;
+          white-space: nowrap;
+          font-variant: small-caps;
+          font-size:15px;
+        }
+      }
+  
+      .rCol {
+        margin-left:5px;
+      }
+  
+      .lCol {
+        margin-right:5px;
+      }
+  
+      nav {
+        margin-bottom:0px;
+      }
+    }
+  }
+
+  section.sheet-body {
+    .description {
+      .flexrow {
+        justify-content: space-between;
+        align-items:baseline;
+
+        .flexcol {
+          flex:none;
+          width:calc(50% - 10px);
+        }
+
+        .dons,
+        .defauts {
+          margin-bottom:10px;
+
+          h2 {
+            position:relative;
+
+            a {
+              position:absolute;
+              right:5px;
+              font-size:20px;
+            }
+          }
+
+          >div {
+            padding:2px;
+            border:1px solid black;
+            
+            header {
+              width:100%;
+              position:relative;
+              display:flex;
+
+              i.extendButton {
+                position:absolute;
+                font-size:20px;
+                cursor:pointer;
+                margin-top:1px;
+              }
+
+              h3 {
+                font-size:18px;
+                width:100%;
+                text-align: center;
+                font-variant: small-caps;
+                margin-bottom:0px;
+              }
+
+              div.gestionButton {
+                display:flex;
+                position:absolute;
+                width:30px;
+                height:22px;
+                right:0px;
+                justify-content: space-between;
+                align-items: center;
+
+                a {
+                  font-size:12px;
+                  margin-top: 2px;
+                }
+              }
+            }
+            
+            span {
+              display: none;
+              text-align: justify;
+              word-break: break-all;
+            }
+
+            &:not(:last-of-type) {
+              margin-bottom:5px;
+            }
+          }
+        }
+      }
+    }
+
+    .maitrises {
+      margin-bottom:20px;
+
+      .header-tTitle {
+        .header-tTitle;
+      }
+
+      .flexrow {
+        justify-content: space-between;
+
+        .physique {
+          color: @physique;
+
+          h4 {
+            border-bottom: 2px solid @physique;
+          }
+
+          div.ranks {
+            input[type="checkbox"]:checked ~ span::before {
+              background:@physique;
+            }
+
+            span::before {
+              border: 2px solid @physique;
+            }
+          }
+        }
+
+        .mental {
+          color: @mental;
+
+          h4 {
+            border-bottom: 2px solid @physique;
+          }
+
+          div.ranks {
+            input[type="checkbox"]:checked ~ span::before {
+              background:@mental;
+            }
+
+            span::before {
+              border: 2px solid @mental;
+            }
+          }
+        }
+
+        .social {
+          color: @social;
+
+          h4 {
+            border-bottom: 2px solid @physique;
+          }
+
+          div.ranks {
+            input[type="checkbox"]:checked ~ span::before {
+              background:@social;
+            }
+
+            span::before {
+              border: 2px solid @social;
+            }
+          }
+        }
+
+        .flexcol {
+          width:calc((100% / 3) - 10px);
+          flex:none;
+
+          h3.header {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            font-weight:bold;
+            text-transform: uppercase;
+            color:inherit;
+
+            input {
+              border:0px;
+              width:20px;
+              background:transparent;
+              font-size: 1.125em;
+              font-weight:bold;
+              color:inherit;
+              text-align: center;
+            }
+
+            img {
+              width: 20px;
+              height: 20px;
+              border: 1px solid black;
+              margin-right:2px;
+              background:@white;
+              cursor:pointer;
+            }
+          }
+
+          h4 {
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 18px;
+            line-height: 18px;
+            margin-top: 15px;
+            padding-bottom: 2px;
+            color:inherit;
+          }
+
+          .competences {
+            margin-bottom:5px;
+
+            span.title {
+              color:inherit;
+            }
+
+            div.ranks {
+              flex:none;
+              width: 60px;
+              align-items: center;
+              justify-content: space-between;
+
+              label {
+                position: relative;
+                width: 16px;
+                height:16px;
+                flex:none;
+                cursor: pointer;
+
+                input[type="checkbox"] {
+                  position: absolute;
+                  width: 16px;
+                  height: 16px;
+                  opacity: 0;
+                  margin:0px;
+                  cursor:pointer;
+                }
+
+                span {
+                  display: block;
+                  width: 12px;
+                  height: 12px;
+
+                  &::before {
+                    content: "";
+                    display: blocK;
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .prodiges {
+      margin-bottom:20px;
+
+      .header-tTitle {
+        .header-tTitle;
+      }
+
+      .flexrow {
+        justify-content: space-between;
+        align-items:baseline;
+
+        h3.header {
+          text-align: center;
+          font-weight:bold;
+          text-transform: uppercase;
+          color:inherit;
+          position:relative;
+
+          >a {
+            position: absolute;
+            right: 5px;
+            font-size: 15px;
+          }
+        }
+
+        .terre {
+          color: @physique;
+        }
+
+        .air {
+          color: @mental;
+        }
+
+        .eau {
+          color: @social;
+        }
+
+        .flexcol {
+          flex:none;
+          width:calc((100% / 3) - 5px);
+
+          >div {
+            padding: 2px;
+            border: 1px solid black;
+            
+            header {
+              width: 100%;
+              position: relative;
+              display: flex;
+
+              h3.titleProdige {
+                position:relative;
+                padding-left:20px;
+                margin-bottom:0px;
+                display: flex;
+                align-items: center;
+                cursor:pointer;
+
+                img {
+                  height:17px;
+                  margin-right:2px;
+                }
+
+                a {
+                  position:absolute;
+                  right:5px;
+                  font-size:12px;
+                }
+              }
+
+              i.extendButton {
+                position: absolute;
+                font-size: 20px;
+                cursor: pointer;
+                z-index:90;
+              }
+
+              div.gestionButton {
+                display: flex;
+                position: absolute;
+                width: 30px;
+                height: 22px;
+                right: 0px;
+                justify-content: space-between;
+                align-items: center;
+              }
+            }
+
+            span.prodigeRang {
+              margin-top:5px;
+              padding-bottom:2px;
+              border-bottom:1px dotted black;
+            }
+
+            &:not(:last-of-type) {
+              margin-bottom:2px;
+            }
+          }
+        }
+      }
+    }
+
+    .armesProtectionsEquipement {
+      margin-bottom:20px;
+
+      .header-tTitle {
+        .header-tTitle;
+      }
+
+      .flexrow {
+        justify-content: space-between;
+
+        .materiel {
+          flex:none;
+          width: calc(100% - 250px - 150px - 15px);
+        }
+
+        .degatsProtections {
+          flex:none;
+          width: 250px;
+        }
+
+        .portee {
+          flex:none;
+          width: 150px;
+        }
+
+        h3.header {
+          text-align: center;
+          font-weight:bold;
+          text-transform: uppercase;
+          color:inherit;
+        }
+      }
+
+      .headerEquipement,
+      .headerArmeProtection {
+        a {
+          position: absolute;
+          right: 10px;
+          font-size: 20px;
+        }
+      }
+
+      .equipement {
+        display:flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom:5px;
+
+        >div {
+          width:calc(50% - 10px);
+          flex:none;
+          padding:2px;
+          border:1px solid black;
+          margin-bottom:5px;
+          
+          header {
+            width:100%;
+            position:relative;
+            display:flex;
+
+            i.extendButton {
+              position:absolute;
+              font-size:20px;
+              cursor:pointer;
+              margin-top:1px;
+            }
+
+            h3 {
+              font-size:18px;
+              width:100%;
+              text-align: center;
+              font-variant: small-caps;
+              margin-bottom:0px;
+            }
+
+            div.gestionButton {
+              display:flex;
+              position:absolute;
+              width:30px;
+              height:22px;
+              right:0px;
+              justify-content: space-between;
+              align-items: center;
+
+              a {
+                font-size:12px;
+                margin-top: 2px;
+              }
+            }
+          }
+          
+          span {
+            display: none;
+            text-align: justify;
+            word-break: break-all;
+          }
+        }
+      }
+
+      .armeprotection {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        >div {
+          display:flex;
+          border:1px solid black;
+          padding:2px;
+          flex:none;
+          width:calc(50% - 10px);
+          flex-wrap: wrap;
+
+          header {
+            width:100%;
+            position:relative;
+            display:flex;
+
+            i.extendButtonSpec {
+              position:absolute;
+              font-size:20px;
+              cursor:pointer;
+              margin-top:1px;
+            }
+
+            h3 {
+              font-size:18px;
+              width:100%;
+              text-align: center;
+              font-variant: small-caps;
+              margin-bottom:0px;
+            }
+
+            div.gestionButton {
+              display:flex;
+              position:absolute;
+              width:30px;
+              height:22px;
+              right:0px;
+              justify-content: space-between;
+              align-items: center;
+
+              a {
+                font-size:12px;
+                margin-top: 2px;
+              }
+            }
+          }
+
+          .data {
+            display:flex;
+            flex:none;
+            width:50%;
+            flex-wrap: wrap;
+
+            h4 {
+              width:100%;
+              font-variant: small-caps;
+              text-align: center;
+            }
+
+            span {
+              width:100%;
+              text-align: center;
+            }
+
+            &:nth-of-type(odd) {
+              border-right:1px dotted black;
+            }
+          }
+
+          .toExtend {
+            border-top:1px dotted black;
+            word-break: break-all;
+          }
+        }
+      }
+    }
+  }
+}
+
+.prodige {
+  h1.charname {
+    display:flex;
+    justify-content: space-between;
+
+    input[type="text"] {
+      width:calc(100% - 60px) !important;
+      flex:none;
+    }
+
+    input[type="number"] {
+      width:50px !important;
+      text-align: center !important;
+      flex:none;
+    }
+  }
+}
+
+.armeprotection {
+  .details {
+    justify-content: space-between;
+    margin-bottom:5px;
+
+    .flexcol {
+      width:calc(50% - 5px);
+      flex:none;
+
+      h2 {
+        text-align: center;
+        font-variant: small-caps;
+        margin-bottom: 0px;
+        border-color:black;
+      }
+
+      input {
+        text-align: center;
+        border-bottom: 1px dashed black;
+        border-top: 0px;
+        border-right: 0px;
+        border-left: 0px;
+        border-radius: 0px;
+        background: transparent;
+        padding-top: 10px;
+      }
+    }
+  }
+
+  .description {
+    h2 {
+      text-align: center;
+      font-variant: small-caps;
+      margin-bottom: 0px;
+      border-bottom:0px;
+    }
+  }
+}
+
+.aquablueProdigeRoll {
+  >li.roll {
+
+    &:nth-of-type(1) {
+      background-image:none !important;
+      background-color: @diceBlack;
+      color:@white !important;
+      font-weight:normal;
+      border:2px solid @diceBlack;
+      filter:none !important;
+    }
+
+    &:nth-of-type(2) {
+      background-image:none !important;
+      background-color: @white;
+      color:@black !important;
+      border:2px solid @white;
+      filter:none !important;
+    }
+
+    &:nth-of-type(3) {
+      background-image:none !important;
+      background-color: @diceBlue;
+      color:@black !important;
+      border:2px solid @diceBlue;
+      filter:none !important;
+    }
+
+    &:nth-of-type(4) {
+      background-image:none !important;
+      background-color: @diceRed;
+      color:@white !important;
+      border:2px solid @diceRed;
+      filter:none !important;
+    }
+
+    &.success {
+      border-color:@green;
+    }
+  }
+}

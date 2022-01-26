@@ -1,0 +1,26 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    <header class="sheet-header flexrow">
+        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
+        <div class="flexcol aData">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{data.name}}" placeholder="{{localize "AQUABLUE.Nom"}}" />
+            </h1>
+            <div class="flexrow details">
+                <div class="flexcol">
+                    <h2>{{localize "AQUABLUE.ITEM.ARMEPROTECTION.DegatsProtections"}}</h2>
+                    <input type="text" name="data.degatsProtections" value="{{systemData.degatsProtections}}" />
+                </div>
+
+                <div class="flexcol">
+                    <h2>{{localize "AQUABLUE.ITEM.ARMEPROTECTION.Portee"}}</h2>
+                    <input type="text" name="data.portee" value="{{systemData.portee}}" />
+                </div>
+            </div>
+            <div class="description">
+                <h2>{{localize "AQUABLUE.ITEM.ARMEPROTECTION.Traits"}}</h2>
+    
+                {{editor content=systemData.traits target="data.traits" button=true owner=owner editable=editable}}
+            </div>
+        </div>
+    </header>
+</form>

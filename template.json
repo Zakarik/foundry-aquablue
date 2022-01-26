@@ -1,0 +1,443 @@
+{
+  "Actor": {
+    "types": ["pj", "pnj"],
+    "pj": {
+      "occupation": "",
+      "type": "",
+      "description": "",
+      "richesse": 0,
+      "energie": {
+        "value": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maitrises": {
+        "physique":{
+          "min": 0,
+          "value": 0,
+          "competences" : {
+            "aventure": {
+              "liste": {
+                "athletisme": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "plongee": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "survie": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "combat": {
+              "liste": {
+                "armeDistance": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "combatSubaquatique": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "corpsACorps": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "savoirFaire": {
+              "liste": {
+                "artisanat": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "chassePeche": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "prodigeTerre": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            }
+          }
+        },
+        "mental":{
+          "min": 0,
+          "value": 0,
+          "competences" : {
+            "sagesse": {
+              "liste": {
+                "erudition": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "medecine": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "prodigeAir": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "technique": {
+              "liste": {
+                "astres": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "pilotage": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "technologie": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "volonte": {
+              "liste": {
+                "discussion": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "investigation": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "meditation": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            }
+          }
+        },
+        "social":{
+          "min": 0,
+          "value": 0,
+          "competences" : {
+            "ame": {
+              "liste": {
+                "chamanisme": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "contacts": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "empathie": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "art": {
+              "liste": {
+                "larcin": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "performance": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "prodigeEau": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "charisme": {
+              "liste": {
+                "commandement": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "dressage": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "seduction": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pnj": {
+      "occupation": "",
+      "type": "",
+      "description": "",
+      "richesse": 0,
+      "energie": {
+        "value": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maitrises": {
+        "physique":{
+          "min": 0,
+          "value": 0,
+          "competences" : {
+            "aventure": {
+              "liste": {
+                "athletisme": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "plongee": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "survie": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "combat": {
+              "liste": {
+                "armeDistance": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "combatSubaquatique": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "corpsACorps": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "savoirFaire": {
+              "liste": {
+                "artisanat": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "chassePeche": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "prodigeTerre": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            }
+          }
+        },
+        "mental":{
+          "min": 0,
+          "value": 0,
+          "competences" : {
+            "sagesse": {
+              "liste": {
+                "erudition": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "medecine": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "prodigeAir": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "technique": {
+              "liste": {
+                "astres": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "pilotage": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "technologie": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "volonte": {
+              "liste": {
+                "discussion": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "investigation": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "meditation": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            }
+          }
+        },
+        "social":{
+          "min": 0,
+          "value": 0,
+          "competences" : {
+            "ame": {
+              "liste": {
+                "chamanisme": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "contacts": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "empathie": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "art": {
+              "liste": {
+                "larcin": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "performance": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "prodigeEau": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            },
+            "charisme": {
+              "liste": {
+                "commandement": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "dressage": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                },
+                "seduction": {
+                  "v1": false,
+                  "v2": false,
+                  "v3": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Item": {
+    "types": ["dons", "defauts", "equipement", "armeprotection", "prodigeterre", "prodigeair", "prodigeeau"],
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "dons": {
+      "templates": ["base"]
+    },
+    "defauts": {
+      "templates": ["base"]
+    },
+    "equipement": {
+      "templates": ["base"]
+    },
+    "prodigeterre": {
+      "templates": ["base"],
+      "rang": 0
+    },
+    "prodigeair": {
+      "templates": ["base"],
+      "rang": 0
+    },
+    "prodigeeau": {
+      "templates": ["base"],
+      "rang": 0
+    },
+    "armeprotection": {
+      "degatsProtections": 0,
+      "portee": "",
+      "traits": ""
+    }
+  }
+}

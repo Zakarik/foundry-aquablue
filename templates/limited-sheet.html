@@ -1,0 +1,45 @@
+<form class="flexcol {{cssClass}} limited" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
+        <div class="flexcol aData">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{data.name}}" placeholder="{{localize "AQUABLUE.Nom"}}" />
+            </h1>
+            
+            <div class="flexrow">
+                <div class="header-fields lCol flexcol">
+                    <div class="cData">
+                        <span class="header-lTitle">{{localize "AQUABLUE.Type"}} : </span>
+                        <select name="data.type">
+                            <option value=""></option>
+                            {{#if (pnj data.type)}}
+                                <option value="animal" {{#if (animal systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Animal"}}</option>
+                                <option value="autre" {{#if (autre systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Autre"}}</option>
+                            {{/if}}
+                            <option value="humain" {{#if (humain systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Humain"}}</option>
+                            <option value="mēume" {{#if (mēume systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Meume"}}</option>
+                            <option value="métis" {{#if (métis systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Metis"}}</option>
+                            <option value="robot" {{#if (robot systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Robot"}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="header-fields rCol flexcol"></div>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        
+        {{!-- Personnage Tab --}}
+        <div class="description" data-group="primary" data-tab="personnage">    
+            <h2 class="header-tTitle">{{localize "AQUABLUE.Description"}}</h2>
+
+            {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+    </section>
+
+</form>

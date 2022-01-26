@@ -1,0 +1,182 @@
+{
+  "ACTOR":{
+    "TypePj":"PJ",
+    "TypePnj":"PNJ"
+  },
+  "ITEM":{
+    "TypeDons":"Dons",
+    "TypeDefauts":"Défauts",
+    "TypeArmeprotection":"Arme & Protection",
+    "TypeEquipement":"Équipement",
+    "TypeProdigeterre":"Prodige de la Terre",
+    "TypeProdigeair":"Prodige de l'Air",
+    "TypeProdigeeau":"Prodige de l'Eau"
+  },
+
+  "AQUABLUE": {
+    "Nom":"Nom",
+    "Richesse":"Richesse",
+    "Occupation":"Occupation",
+    "PointsEnergie":"Points d'Energie",
+    "Dons":"Dons",
+    "Defauts":"Défauts",
+    "Description":"Description",
+    "Personnage":"Personnage",
+    "Prodige":"Prodiges",
+    "ArmeProtectionEquipement":"Armes, Protections & Équipements",
+    "TYPE":{
+      "Label":"Type",
+      "Animal":"Animal",
+      "Humain":"Humain",
+      "Meume":"Mēume",
+      "Metis":"Métis",
+      "Robot":"Robot",
+      "Autre":"Autre"
+    },
+    "MAÎTRISE":{
+      "Nom":"Maîtrises",
+      "PHYSIQUE":{
+        "Nom":"Physique",
+        "CATEGORIE":{
+          "AVENTURE":{
+            "Nom":"Aventure",
+            "COMPETENCE":{
+              "Athletisme":"Athlétisme",
+              "Plongee":"Plongée",
+              "Survie":"Survie"
+            }
+          },
+          "COMBAT":{
+            "Nom":"Combat",
+            "COMPETENCE": {
+              "ArmeDistance":"Armes à distance",
+              "CombatSubaquatique":"Combat subaquatique",
+              "CorpsACorps":"Corps à corps"
+            }
+          },
+          "SAVOIRFAIRE":{
+            "Nom":"Savoir-Faire",
+            "COMPETENCE":{
+              "Artisanat":"Artisanat",
+              "ChassePeche":"Chasse & Pêche",
+              "ProdigeTerre":"Prodiges de Terre"
+            }
+          }
+          
+        }
+      },
+      "MENTAL":{
+        "Nom":"Mental",
+        "CATEGORIE":{
+          "SAGESSE":{
+            "Nom":"Sagesse",
+            "COMPETENCE":{
+              "Erudition":"Érudition",
+              "Medecine":"Médecine",
+              "ProdigeAir":"Prodiges d'Air"
+            }
+          },
+          "TECHNIQUE":{
+            "Nom":"Technique",
+            "COMPETENCE": {
+              "Astres":"Astres",
+              "Pilotage":"Pilotage",
+              "Technologie":"Technologie"
+            }
+          },
+          "VOLONTE":{
+            "Nom":"Volonté",
+            "COMPETENCE":{
+              "Discussion":"Discussion",
+              "Investigation":"Investigation",
+              "Meditation":"Méditation"
+            }
+          }
+          
+        }
+      },
+      "SOCIAL":{
+        "Nom":"Social",
+        "CATEGORIE":{
+          "ÂME":{
+            "Nom":"Âme",
+            "COMPETENCE":{
+              "Chamanisme":"Chamanisme",
+              "Contacts":"Contacts",
+              "Empathie":"Empathie"
+            }
+          },
+          "ART":{
+            "Nom":"Art",
+            "COMPETENCE": {
+              "Larcin":"Larcin",
+              "Performance":"Performance",
+              "ProdigeEau":"Prodiges d'Eau"
+            }
+          },
+          "CHARISME":{
+            "Nom":"Charisme",
+            "COMPETENCE":{
+              "Commandement":"Commandement",
+              "Dressage":"Dressage",
+              "Seduction":"Séduction"
+            }
+          }
+          
+        }
+      }
+    },
+    "ROLL":{
+      "Critique":"Critique Potentiel !",
+      "TYPE":{
+        "PHYSIQUE":{
+          "Normal":"Jet de Physique",
+          "AvecAvantage":"Jet de Physique avec Avantage",
+          "AvecDesavantage":"Jet de Physique avec Désavantage"
+        },
+        "MENTAL":{
+          "Normal":"Jet de Mental",
+          "AvecAvantage":"Jet de Mental avec Avantage",
+          "AvecDesavantage":"Jet de Mental avec Désavantage"
+        },
+        "SOCIAL":{
+          "Normal":"Jet de Social",
+          "AvecAvantage":"Jet de Social avec Avantage",
+          "AvecDesavantage":"Jet de Social avec Désavantage"
+        },
+        "PRODIGE":{
+          "JetDe":"Jet de ",
+          "AvecAvantage":"Avec Avantage",
+          "AvecDesavantage":"Avec Désavantage"
+        }
+      },
+      "DIALOG":{
+        "Label":"Type de jet",
+        "Normal":"Jet Normal",
+        "AvecAvantage":"Jet avec Avantage",
+        "AvecDesavantage":"Jet avec Désavantage",
+        "Valider":"Valider",
+        "Annuler":"Annuler"
+      },
+      "Initiative":"Jet d'initiative !"
+    },
+    "ITEM":{
+      "PRODIGE":{
+        "Nom":"Prodiges",
+        "Terre":"Terre",
+        "Air":"Air",
+        "Eau":"Eau",
+        "PE":"PE"
+      },
+      "ARMEPROTECTION":{
+        "Nom":"Armes & Protections",
+        "DegatsProtections":"Dégâts/Protections",
+        "Portee":"Portée",
+        "Traits":"Traits"
+      },
+      "EQUIPEMENT":{
+        "Nom":"Équipement"
+      }
+    }
+  }
+}

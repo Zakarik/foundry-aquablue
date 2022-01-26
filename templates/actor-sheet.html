@@ -1,0 +1,298 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
+        <div class="flexcol aData">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{data.name}}" placeholder="{{localize "AQUABLUE.Nom"}}" />
+            </h1>
+            
+            <div class="flexrow">
+                <div class="header-fields lCol flexcol">
+                    <div class="cData">
+                        <span class="header-lTitle">{{localize "AQUABLUE.TYPE.Label"}} : </span>
+                        <select name="data.type">
+                            <option value=""></option>
+                            {{#if (pnj data.type)}}
+                                <option value="animal" {{#if (animal systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Animal"}}</option>
+                                <option value="autre" {{#if (autre systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Autre"}}</option>
+                            {{/if}}
+                            <option value="humain" {{#if (humain systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Humain"}}</option>
+                            <option value="mēume" {{#if (mēume systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Meume"}}</option>
+                            <option value="métis" {{#if (métis systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Metis"}}</option>
+                            <option value="robot" {{#if (robot systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Robot"}}</option>
+                        </select>
+                    </div>
+
+                    <div class="cData">
+                        <span class="header-lTitle">{{localize "AQUABLUE.Richesse"}} : </span>
+                        <input type="number" name="data.richesse" value="{{systemData.richesse}}"/>
+                    </div>
+                </div>
+
+                <div class="header-fields rCol flexcol">
+                    <div class="cData">
+                        <span class="header-lTitle">{{localize "AQUABLUE.Occupation"}} : </span>
+                        <input type="text" name="data.occupation" value="{{systemData.occupation}}"/>
+                    </div>
+
+                    <div class="resource">
+                        <span class="header-lTitle">{{localize "AQUABLUE.PointsEnergie"}} : </span>
+                        <input type="number" name="data.energie.value" min="{{systemData.energie.min}}" max="{{systemData.energie.max}}" value="{{systemData.energie.value}}"/>
+                        <span> / </span>
+                        <input type="number" name="data.energie.max" min="{{systemData.energie.min}}" value="{{systemData.energie.max}}"/>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Sheet Tab Navigation --}}
+            <nav class="sheet-tabs tabs" data-group="primary">
+                <a class="item" data-tab="personnage">{{localize "AQUABLUE.Personnage"}}</a>
+                <a class="item" data-tab="maitrises">{{localize "AQUABLUE.MAÎTRISE.Nom"}}</a>
+                <a class="item" data-tab="prodiges">{{localize "AQUABLUE.ITEM.PRODIGE.Nom"}}</a>
+                <a class="item" data-tab="armesProtectionsEquipement">{{localize "AQUABLUE.ArmeProtectionEquipement"}}</a>
+            </nav>
+        </div>
+    </header>
+
+    
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        
+        {{!-- Personnage Tab --}}
+        <div class="tab description" data-group="primary" data-tab="personnage">
+            <div class="flexrow">
+                <div class="flexcol dons">
+                    <h2 class="header-tTitle">
+                        {{localize "AQUABLUE.Dons"}}
+                        <a class="item-control item-create" data-type="dons"><i class="fas fa-plus"></i></a>
+                    </h2>
+                    {{#each actor.dons as |dons id|}}
+                        <div>
+                            <header class="extendParent" data-item-id="{{dons._id}}">
+                                <h3>{{dons.name}}</h3>
+                                <i class="far fa-plus-square extendButton"></i>
+                                <div class="gestionButton">
+                                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </header>
+                            
+                            <span>{{{dons.data.description}}}</span>
+                        </div>
+                    {{/each}}
+                </div>
+    
+                <div class="flexcol defauts">
+                    <h2 class="header-tTitle">
+                        {{localize "AQUABLUE.Defauts"}}
+                        <a class="item-control item-create" data-type="defauts"><i class="fas fa-plus"></i></a>
+                    </h2>
+                    {{#each actor.defauts as |defauts id|}}
+                        <div>
+                            <header class="extendParent" data-item-id="{{defauts._id}}">
+                                <h3> {{defauts.name}}</h3>
+                                <i class="far fa-plus-square extendButton"></i>
+                                <div class="gestionButton">
+                                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </header>
+
+                            <span>{{{defauts.data.description}}}</span>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <h2 class="header-tTitle">{{localize "AQUABLUE.Description"}}</h2>
+
+            {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        <div class="tab maitrises" data-group="primary" data-tab="maitrises">
+            <h2 class="header-tTitle">{{localize "AQUABLUE.MAÎTRISE.Nom"}}</h2>
+            <div class="flexrow">
+                {{#each data.data.maitrises as | key maitrise|}}
+                    <div class="flexcol {{maitrise}}">
+                        <h3 class="header">
+                            <img class="roll" data-type="{{maitrise}}" data-value="{{key.value}}" src="systems/aquablue/assets/icons/D6Black.png">
+                            <label for="{{maitrise}}">{{key.label}}</label>
+                            <input type="number" min="{{key.min}}" id="{{maitrise}}" name="data.maitrises.{{maitrise}}.value" value="{{key.value}}" data-dtype="Number"/>
+                        </h3>
+                        {{#each key.competences as | keyCat cat|}}
+                            <h4>{{keyCat.label}}</h4>
+                            {{#each keyCat.liste as | keyComp comp|}}
+                            <div class="flexrow flex-between competences">
+                                <span class="title">{{keyComp.label}}</span>
+                                <div class="flexrow flex-between ranks">
+                                    <label>
+                                        <input type="checkbox" class="checkV1 {{comp}}v1" name="data.maitrises.{{maitrise}}.competences.{{cat}}.liste.{{comp}}.v1" value="true" {{#if keyComp.v1}} checked {{/if}} />
+                                        <span></span>
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" class="checkV2 {{comp}}v2" name="data.maitrises.{{maitrise}}.competences.{{cat}}.liste.{{comp}}.v2" value="true" {{#if keyComp.v2}} checked {{/if}} />
+                                        <span></span>
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" class="checkV3 {{comp}}v3" name="data.maitrises.{{maitrise}}.competences.{{cat}}.liste.{{comp}}.v3" value="true" {{#if keyComp.v3}} checked {{/if}} />
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                            {{/each}}
+                        {{/each}}
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="tab prodiges" data-group="primary" data-tab="prodiges">
+            <h2 class="header-tTitle">{{localize "AQUABLUE.Prodige"}}</h2>
+            <div class="flexrow">
+                <div class="flexcol terre">
+                    <h3 class="header">
+                        {{localize "AQUABLUE.ITEM.PRODIGE.Terre"}}
+
+                        <a class="item-control item-create" data-type="prodigeterre"><i class="fas fa-plus"></i></a>
+                    </h3>
+                    {{#each actor.prodigeTerre as |prodige id|}}
+                        <div>
+                            <header class="extendParent" data-item-id="{{prodige._id}}">
+                                <h3 class="titleProdige rollProdige" data-name="{{prodige.name}}" data-type="terre">
+                                    <img src="systems/aquablue/assets/icons/D6Black.png">
+
+                                    {{prodige.name}}
+                                </h3>
+
+                                <i class="far fa-plus-square extendButton"></i>
+                                
+                                <div class="gestionButton">
+                                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </header>
+                            <span style="display:none;" class="prodigeRang">{{localize "AQUABLUE.ITEM.PRODIGE.PE"}} : {{prodige.data.rang}}</span>
+                            <span style="display:none;">{{{prodige.data.description}}}</span>
+                        </div>
+                    {{/each}}
+                </div>
+
+                <div class="flexcol air">
+                    <h3 class="header">
+                        {{localize "AQUABLUE.ITEM.PRODIGE.Air"}}
+
+                        <a class="item-control item-create" data-type="prodigeair"><i class="fas fa-plus"></i></a>
+                    </h3>
+
+                    {{#each actor.prodigeAir as |prodige id|}}
+                        <div>
+                            <header class="extendParent" data-item-id="{{prodige._id}}">
+                                <h3 class="titleProdige rollProdige" data-name="{{prodige.name}}" data-type="air">
+                                    <img src="systems/aquablue/assets/icons/D6Black.png">
+
+                                    {{prodige.name}}
+                                </h3>
+
+                                <i class="far fa-plus-square extendButton"></i>
+                                
+                                <div class="gestionButton">
+                                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </header>
+                            <span style="display:none;" class="prodigeRang">{{localize "AQUABLUE.ITEM.PRODIGE.PE"}} : {{prodige.data.rang}}</span>
+                            <span style="display:none;">{{{prodige.data.description}}}</span>
+                        </div>
+                    {{/each}}
+                </div>
+
+                <div class="flexcol eau">
+                    <h3 class="header">
+                        {{localize "AQUABLUE.ITEM.PRODIGE.Eau"}}
+                    
+                        <a class="item-control item-create" data-type="prodigeeau"><i class="fas fa-plus"></i></a>
+                    </h3>
+
+                    {{#each actor.prodigeEau as |prodige id|}}
+                        <div>
+                            <header class="extendParent" data-item-id="{{prodige._id}}">
+                                <h3 class="titleProdige rollProdige" data-name="{{prodige.name}}" data-type="eau">
+                                    <img src="systems/aquablue/assets/icons/D6Black.png">
+
+                                    {{prodige.name}}
+                                </h3>
+
+                                <i class="far fa-plus-square extendButton"></i>
+                                
+                                <div class="gestionButton">
+                                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </header>
+                            <span style="display:none;" class="prodigeRang">{{localize "AQUABLUE.ITEM.PRODIGE.PE"}} : {{prodige.data.rang}}</span>
+                            <span style="display:none;">{{{prodige.data.description}}}</span>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <div class="tab armesProtectionsEquipement" data-group="primary" data-tab="armesProtectionsEquipement">
+            <h2 class="header-tTitle headerEquipement">
+                {{localize "AQUABLUE.ITEM.EQUIPEMENT.Nom"}}
+                <a class="item-control item-create" data-type="equipement"><i class="fas fa-plus"></i></a>
+            </h2>
+            <div class="equipement">
+                {{#each actor.equipement as |equip id|}}
+                    <div>
+                        <header class="extendParent" data-item-id="{{equip._id}}">
+                            <h3 class="titleEquipement">{{equip.name}}</h3>
+
+                            <i class="far fa-plus-square extendButton"></i>
+                            
+                            <div class="gestionButton">
+                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </header>
+                        <span style="display:none;">{{{equip.data.description}}}</span>
+                    </div>
+                {{/each}}
+            </div>
+            <h2 class="header-tTitle headerArmeProtection">
+                {{localize "AQUABLUE.ITEM.ARMEPROTECTION.Nom"}}
+
+                <a class="item-control item-create" data-type="armeprotection"><i class="fas fa-plus"></i></a>
+            </h2>
+            <div class="armeprotection">
+                {{#each actor.armeprotection as |materiel id|}}
+                    <div>
+                        <header class="extendParent" data-item-id="{{materiel._id}}">
+                            <h3 class="titleArmeProtection">{{materiel.name}}</h3>
+
+                            <i class="far fa-plus-square extendButtonSpec"></i>
+                            
+                            <div class="gestionButton">
+                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </header>
+                        <div class="data">
+                            <h4>{{localize "AQUABLUE.ITEM.ARMEPROTECTION.DegatsProtections"}}</h4>
+                            <span>{{materiel.data.degatsProtections}}</span>
+                        </div>
+                        <div class="data">
+                            <h4>{{localize "AQUABLUE.ITEM.ARMEPROTECTION.Portee"}}</h4>
+                            <span>{{materiel.data.portee}}</span>
+                        </div>
+                        <span class="toExtend" style="display:none;">{{{materiel.data.traits}}}</span>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+</form>

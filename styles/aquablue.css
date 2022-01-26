@@ -1,0 +1,654 @@
+.aquablue .window-content {
+  background: none;
+  background-color: white;
+}
+.aquablue header.sheet-header {
+  flex: 0;
+  align-items: flex-start;
+}
+.aquablue header.sheet-header .profile-img {
+  width: 150px;
+  height: 200px;
+  margin-right: 5px;
+}
+.aquablue header.sheet-header h1.charname {
+  width: 100%;
+  margin-bottom: 5px;
+  flex: none;
+}
+.aquablue header.sheet-header h1.charname input {
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  border-radius: 0px;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  margin: 0px;
+  padding-top: 20px;
+  font-weight: bold;
+}
+.aquablue .description {
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.aquablue .description .header-tTitle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  background: linear-gradient(to right, #050039, #068dc8);
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 42px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  letter-spacing: 5px;
+}
+.aquablue .description div.editor {
+  width: 100%;
+  border: 1px solid black;
+  min-height: 100px;
+  padding-left: 2px;
+  padding-right: 2px;
+  text-align: justify;
+}
+.aquablue .description div.tox-tinymce {
+  min-height: 100px;
+}
+.actor header.sheet-header {
+  margin-bottom: 5px;
+}
+.actor header.sheet-header .aData {
+  height: 100%;
+}
+.actor header.sheet-header .aData .header-fields {
+  align-self: flex-start;
+}
+.actor header.sheet-header .aData .header-fields .cData,
+.actor header.sheet-header .aData .header-fields .resource {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.actor header.sheet-header .aData .header-fields .cData input,
+.actor header.sheet-header .aData .header-fields .resource input,
+.actor header.sheet-header .aData .header-fields .cData select,
+.actor header.sheet-header .aData .header-fields .resource select {
+  width: 100%;
+  border-bottom: 1px dashed black;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-radius: 0px;
+  background: transparent;
+  padding-top: 10px;
+}
+.actor header.sheet-header .aData .header-fields .cData input[type="number"],
+.actor header.sheet-header .aData .header-fields .resource input[type="number"],
+.actor header.sheet-header .aData .header-fields .cData select[type="number"],
+.actor header.sheet-header .aData .header-fields .resource select[type="number"] {
+  text-align: center;
+}
+.actor header.sheet-header .aData .header-fields .cData:not(:first-of-type),
+.actor header.sheet-header .aData .header-fields .resource:not(:first-of-type) {
+  margin-top: 5px;
+}
+.actor header.sheet-header .aData .header-fields .biography {
+  width: 100%;
+  flex-wrap: wrap;
+}
+.actor header.sheet-header .aData .header-fields .biography > div {
+  width: 100%;
+  border: 1px solid black;
+  min-height: 50px;
+}
+.actor header.sheet-header .aData .header-fields .header-lTitle {
+  margin-right: 5px;
+  white-space: nowrap;
+  font-variant: small-caps;
+  font-size: 15px;
+}
+.actor header.sheet-header .aData .rCol {
+  margin-left: 5px;
+}
+.actor header.sheet-header .aData .lCol {
+  margin-right: 5px;
+}
+.actor header.sheet-header .aData nav {
+  margin-bottom: 0px;
+}
+.actor section.sheet-body .description .flexrow {
+  justify-content: space-between;
+  align-items: baseline;
+}
+.actor section.sheet-body .description .flexrow .flexcol {
+  flex: none;
+  width: calc(50% - 10px);
+}
+.actor section.sheet-body .description .flexrow .dons,
+.actor section.sheet-body .description .flexrow .defauts {
+  margin-bottom: 10px;
+}
+.actor section.sheet-body .description .flexrow .dons h2,
+.actor section.sheet-body .description .flexrow .defauts h2 {
+  position: relative;
+}
+.actor section.sheet-body .description .flexrow .dons h2 a,
+.actor section.sheet-body .description .flexrow .defauts h2 a {
+  position: absolute;
+  right: 5px;
+  font-size: 20px;
+}
+.actor section.sheet-body .description .flexrow .dons > div,
+.actor section.sheet-body .description .flexrow .defauts > div {
+  padding: 2px;
+  border: 1px solid black;
+}
+.actor section.sheet-body .description .flexrow .dons > div header,
+.actor section.sheet-body .description .flexrow .defauts > div header {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.actor section.sheet-body .description .flexrow .dons > div header i.extendButton,
+.actor section.sheet-body .description .flexrow .defauts > div header i.extendButton {
+  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 1px;
+}
+.actor section.sheet-body .description .flexrow .dons > div header h3,
+.actor section.sheet-body .description .flexrow .defauts > div header h3 {
+  font-size: 18px;
+  width: 100%;
+  text-align: center;
+  font-variant: small-caps;
+  margin-bottom: 0px;
+}
+.actor section.sheet-body .description .flexrow .dons > div header div.gestionButton,
+.actor section.sheet-body .description .flexrow .defauts > div header div.gestionButton {
+  display: flex;
+  position: absolute;
+  width: 30px;
+  height: 22px;
+  right: 0px;
+  justify-content: space-between;
+  align-items: center;
+}
+.actor section.sheet-body .description .flexrow .dons > div header div.gestionButton a,
+.actor section.sheet-body .description .flexrow .defauts > div header div.gestionButton a {
+  font-size: 12px;
+  margin-top: 2px;
+}
+.actor section.sheet-body .description .flexrow .dons > div span,
+.actor section.sheet-body .description .flexrow .defauts > div span {
+  display: none;
+  text-align: justify;
+  word-break: break-all;
+}
+.actor section.sheet-body .description .flexrow .dons > div:not(:last-of-type),
+.actor section.sheet-body .description .flexrow .defauts > div:not(:last-of-type) {
+  margin-bottom: 5px;
+}
+.actor section.sheet-body .maitrises {
+  margin-bottom: 20px;
+}
+.actor section.sheet-body .maitrises .header-tTitle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  background: linear-gradient(to right, #050039, #068dc8);
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 42px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  letter-spacing: 5px;
+}
+.actor section.sheet-body .maitrises .flexrow {
+  justify-content: space-between;
+}
+.actor section.sheet-body .maitrises .flexrow .physique {
+  color: #9e7540;
+}
+.actor section.sheet-body .maitrises .flexrow .physique h4 {
+  border-bottom: 2px solid #9e7540;
+}
+.actor section.sheet-body .maitrises .flexrow .physique div.ranks input[type="checkbox"]:checked ~ span::before {
+  background: #9e7540;
+}
+.actor section.sheet-body .maitrises .flexrow .physique div.ranks span::before {
+  border: 2px solid #9e7540;
+}
+.actor section.sheet-body .maitrises .flexrow .mental {
+  color: #767775;
+}
+.actor section.sheet-body .maitrises .flexrow .mental h4 {
+  border-bottom: 2px solid #9e7540;
+}
+.actor section.sheet-body .maitrises .flexrow .mental div.ranks input[type="checkbox"]:checked ~ span::before {
+  background: #767775;
+}
+.actor section.sheet-body .maitrises .flexrow .mental div.ranks span::before {
+  border: 2px solid #767775;
+}
+.actor section.sheet-body .maitrises .flexrow .social {
+  color: #00adee;
+}
+.actor section.sheet-body .maitrises .flexrow .social h4 {
+  border-bottom: 2px solid #9e7540;
+}
+.actor section.sheet-body .maitrises .flexrow .social div.ranks input[type="checkbox"]:checked ~ span::before {
+  background: #00adee;
+}
+.actor section.sheet-body .maitrises .flexrow .social div.ranks span::before {
+  border: 2px solid #00adee;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol {
+  width: calc((100% / 3) - 10px);
+  flex: none;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol h3.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: inherit;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol h3.header input {
+  border: 0px;
+  width: 20px;
+  background: transparent;
+  font-size: 1.125em;
+  font-weight: bold;
+  color: inherit;
+  text-align: center;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol h3.header img {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  margin-right: 2px;
+  background: white;
+  cursor: pointer;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol h4 {
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 18px;
+  margin-top: 15px;
+  padding-bottom: 2px;
+  color: inherit;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol .competences {
+  margin-bottom: 5px;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol .competences span.title {
+  color: inherit;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol .competences div.ranks {
+  flex: none;
+  width: 60px;
+  align-items: center;
+  justify-content: space-between;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol .competences div.ranks label {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex: none;
+  cursor: pointer;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol .competences div.ranks label input[type="checkbox"] {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  margin: 0px;
+  cursor: pointer;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol .competences div.ranks label span {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+.actor section.sheet-body .maitrises .flexrow .flexcol .competences div.ranks label span::before {
+  content: "";
+  display: blocK;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.actor section.sheet-body .prodiges {
+  margin-bottom: 20px;
+}
+.actor section.sheet-body .prodiges .header-tTitle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  background: linear-gradient(to right, #050039, #068dc8);
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 42px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  letter-spacing: 5px;
+}
+.actor section.sheet-body .prodiges .flexrow {
+  justify-content: space-between;
+  align-items: baseline;
+}
+.actor section.sheet-body .prodiges .flexrow h3.header {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: inherit;
+  position: relative;
+}
+.actor section.sheet-body .prodiges .flexrow h3.header > a {
+  position: absolute;
+  right: 5px;
+  font-size: 15px;
+}
+.actor section.sheet-body .prodiges .flexrow .terre {
+  color: #9e7540;
+}
+.actor section.sheet-body .prodiges .flexrow .air {
+  color: #767775;
+}
+.actor section.sheet-body .prodiges .flexrow .eau {
+  color: #00adee;
+}
+.actor section.sheet-body .prodiges .flexrow .flexcol {
+  flex: none;
+  width: calc((100% / 3) - 5px);
+}
+.actor section.sheet-body .prodiges .flexrow .flexcol > div {
+  padding: 2px;
+  border: 1px solid black;
+}
+.actor section.sheet-body .prodiges .flexrow .flexcol > div header {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.actor section.sheet-body .prodiges .flexrow .flexcol > div header h3.titleProdige {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.actor section.sheet-body .prodiges .flexrow .flexcol > div header h3.titleProdige img {
+  height: 17px;
+  margin-right: 2px;
+}
+.actor section.sheet-body .prodiges .flexrow .flexcol > div header h3.titleProdige a {
+  position: absolute;
+  right: 5px;
+  font-size: 12px;
+}
+.actor section.sheet-body .prodiges .flexrow .flexcol > div header i.extendButton {
+  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 90;
+}
+.actor section.sheet-body .prodiges .flexrow .flexcol > div header div.gestionButton {
+  display: flex;
+  position: absolute;
+  width: 30px;
+  height: 22px;
+  right: 0px;
+  justify-content: space-between;
+  align-items: center;
+}
+.actor section.sheet-body .prodiges .flexrow .flexcol > div span.prodigeRang {
+  margin-top: 5px;
+  padding-bottom: 2px;
+  border-bottom: 1px dotted black;
+}
+.actor section.sheet-body .prodiges .flexrow .flexcol > div:not(:last-of-type) {
+  margin-bottom: 2px;
+}
+.actor section.sheet-body .armesProtectionsEquipement {
+  margin-bottom: 20px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .header-tTitle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  background: linear-gradient(to right, #050039, #068dc8);
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 42px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  letter-spacing: 5px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .flexrow {
+  justify-content: space-between;
+}
+.actor section.sheet-body .armesProtectionsEquipement .flexrow .materiel {
+  flex: none;
+  width: calc(100% - 250px - 150px - 15px);
+}
+.actor section.sheet-body .armesProtectionsEquipement .flexrow .degatsProtections {
+  flex: none;
+  width: 250px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .flexrow .portee {
+  flex: none;
+  width: 150px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .flexrow h3.header {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: inherit;
+}
+.actor section.sheet-body .armesProtectionsEquipement .headerEquipement a,
+.actor section.sheet-body .armesProtectionsEquipement .headerArmeProtection a {
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .equipement {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .equipement > div {
+  width: calc(50% - 10px);
+  flex: none;
+  padding: 2px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .equipement > div header {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.actor section.sheet-body .armesProtectionsEquipement .equipement > div header i.extendButton {
+  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 1px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .equipement > div header h3 {
+  font-size: 18px;
+  width: 100%;
+  text-align: center;
+  font-variant: small-caps;
+  margin-bottom: 0px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .equipement > div header div.gestionButton {
+  display: flex;
+  position: absolute;
+  width: 30px;
+  height: 22px;
+  right: 0px;
+  justify-content: space-between;
+  align-items: center;
+}
+.actor section.sheet-body .armesProtectionsEquipement .equipement > div header div.gestionButton a {
+  font-size: 12px;
+  margin-top: 2px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .equipement > div span {
+  display: none;
+  text-align: justify;
+  word-break: break-all;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div {
+  display: flex;
+  border: 1px solid black;
+  padding: 2px;
+  flex: none;
+  width: calc(50% - 10px);
+  flex-wrap: wrap;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div header {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div header i.extendButtonSpec {
+  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 1px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div header h3 {
+  font-size: 18px;
+  width: 100%;
+  text-align: center;
+  font-variant: small-caps;
+  margin-bottom: 0px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div header div.gestionButton {
+  display: flex;
+  position: absolute;
+  width: 30px;
+  height: 22px;
+  right: 0px;
+  justify-content: space-between;
+  align-items: center;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div header div.gestionButton a {
+  font-size: 12px;
+  margin-top: 2px;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div .data {
+  display: flex;
+  flex: none;
+  width: 50%;
+  flex-wrap: wrap;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div .data h4 {
+  width: 100%;
+  font-variant: small-caps;
+  text-align: center;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div .data span {
+  width: 100%;
+  text-align: center;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div .data:nth-of-type(odd) {
+  border-right: 1px dotted black;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div .toExtend {
+  border-top: 1px dotted black;
+  word-break: break-all;
+}
+.prodige h1.charname {
+  display: flex;
+  justify-content: space-between;
+}
+.prodige h1.charname input[type="text"] {
+  width: calc(100% - 60px) !important;
+  flex: none;
+}
+.prodige h1.charname input[type="number"] {
+  width: 50px !important;
+  text-align: center !important;
+  flex: none;
+}
+.armeprotection .details {
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.armeprotection .details .flexcol {
+  width: calc(50% - 5px);
+  flex: none;
+}
+.armeprotection .details .flexcol h2 {
+  text-align: center;
+  font-variant: small-caps;
+  margin-bottom: 0px;
+  border-color: black;
+}
+.armeprotection .details .flexcol input {
+  text-align: center;
+  border-bottom: 1px dashed black;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-radius: 0px;
+  background: transparent;
+  padding-top: 10px;
+}
+.armeprotection .description h2 {
+  text-align: center;
+  font-variant: small-caps;
+  margin-bottom: 0px;
+  border-bottom: 0px;
+}
+.aquablueProdigeRoll > li.roll:nth-of-type(1) {
+  background-image: none !important;
+  background-color: #382621;
+  color: white !important;
+  font-weight: normal;
+  border: 2px solid #382621;
+  filter: none !important;
+}
+.aquablueProdigeRoll > li.roll:nth-of-type(2) {
+  background-image: none !important;
+  background-color: white;
+  color: black !important;
+  border: 2px solid white;
+  filter: none !important;
+}
+.aquablueProdigeRoll > li.roll:nth-of-type(3) {
+  background-image: none !important;
+  background-color: #5cb1e3;
+  color: black !important;
+  border: 2px solid #5cb1e3;
+  filter: none !important;
+}
+.aquablueProdigeRoll > li.roll:nth-of-type(4) {
+  background-image: none !important;
+  background-color: #f1605b;
+  color: white !important;
+  border: 2px solid #f1605b;
+  filter: none !important;
+}
+.aquablueProdigeRoll > li.roll.success {
+  border-color: #18520b;
+}

@@ -1,0 +1,76 @@
+{
+  "name": "aquablue",
+  "title": "Aquablue",
+  "description": "A minimalist game system which provides configurable Actor and Item templates to support free-form system agnostic game-play.",
+  "version": "1.0.0",
+  "minimumCoreVersion": "0.9",
+  "compatibleCoreVersion": "9",
+  "author": "Zakarik",
+  "esmodules": ["module/aquablue.mjs"],
+  "styles": ["styles/aquablue.css"],
+  "packs": [
+    {
+        "name": "dons",
+        "label": "Dons",
+        "path": "packs/dons.db",
+        "entity": "Item",
+        "system": "aquablue"
+    },
+    {
+        "name": "defauts",
+        "label": "Défauts",
+        "path": "packs/defauts.db",
+        "entity": "Item",
+        "system": "aquablue"
+    },
+    {
+        "name": "prodiges",
+        "label": "Prodiges",
+        "path": "packs/prodiges.db",
+        "entity": "Item",
+        "system": "aquablue"
+    },
+    {
+        "name": "armes",
+        "label": "Armes",
+        "path": "packs/armes.db",
+        "entity": "Item",
+        "system": "aquablue"
+    },
+    {
+        "name": "armures",
+        "label": "Armures",
+        "path": "packs/armures.db",
+        "entity": "Item",
+        "system": "aquablue"
+    },
+    {
+        "name": "equipements",
+        "label": "Équipements",
+        "path": "packs/equipements.db",
+        "entity": "Item",
+        "system": "aquablue"
+    },
+    {
+        "name": "vehicules",
+        "label": "Véhicules",
+        "path": "packs/vehicules.db",
+        "entity": "Item",
+        "system": "aquablue"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "French",
+      "path": "lang/fr.json"
+    }
+  ],
+  "gridDistance": 5,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "energie",
+  "url": "",
+  "manifest": "",
+  "download": "",
+  "license": "LICENSE.txt"
+}

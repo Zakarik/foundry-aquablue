@@ -1,0 +1,17 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    <header class="sheet-header flexrow">
+        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
+        <div class="flexcol aData">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{data.name}}" placeholder="{{localize "AQUABLUE.Nom"}}" />
+
+                <input name="data.rang" type="number" value="{{systemData.rang}}" />
+            </h1>
+            <div class="description">
+                <h2 class="header-tTitle">{{localize "AQUABLUE.Description"}}</h2>
+    
+                {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+            </div>
+        </div>
+    </header>
+</form>
