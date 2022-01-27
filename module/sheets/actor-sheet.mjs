@@ -36,6 +36,8 @@ export class AquablueActorSheet extends ActorSheet {
 
     context.systemData = context.data.data;
 
+    console.log(context);
+
     return context;
   }
 
@@ -152,6 +154,9 @@ export class AquablueActorSheet extends ActorSheet {
     html.find('.roll').click(this._onRoll.bind(this));
 
     html.find('.rollProdige').click(this._onRollProdige.bind(this));
+
+    // OPTIONS
+    html.find('.options').click(this._options.bind(this));
   }
 
   /* -------------------------------------------- */
@@ -218,10 +223,12 @@ export class AquablueActorSheet extends ActorSheet {
             roll.evaluate({async:false});
             const toolTip = await roll.getTooltip();
             const result = roll.result;
+            const typeJet = this.actor.getFlag("world", "typeJet")
             
             const checkResults = roll.terms[0].results;
             let listDices = [];
             let hasCritique = ``;
+            let dataChatMessage = {};
 
             for(let i = 0;i < checkResults.length;i++) { listDices.push(checkResults[i].result); }
             
@@ -245,13 +252,19 @@ export class AquablueActorSheet extends ActorSheet {
                   ${hasCritique}
                 </div>
               </div>
-            `;            
+            `;
 
-            ChatMessage.create({
-              user:game.user._id,
-              speaker:ChatMessage.getSpeaker({ actor: this.actor }),
-              content:contentChatMessage
-            }, {})
+            dataChatMessage.user = game.user._id;
+            dataChatMessage.speaker = ChatMessage.getSpeaker({ actor: this.actor });
+            dataChatMessage.content = contentChatMessage;
+                          
+            switch(typeJet) {
+              case "GM":
+                dataChatMessage.whisper = ChatMessage.getWhisperRecipients("GM");
+                break;
+            }
+
+            ChatMessage.create(dataChatMessage, {});
           },
           icon: `<i class="fas fa-check"></i>`
         },
@@ -329,6 +342,7 @@ export class AquablueActorSheet extends ActorSheet {
             const checkResults = roll.terms[0].results;
             let listDices = [];
             let hasCritique = ``;
+            let dataChatMessage = {};
 
             for(let i = 0;i < checkResults.length;i++) { listDices.push(checkResults[i].result); }
             
@@ -358,13 +372,19 @@ export class AquablueActorSheet extends ActorSheet {
                   ${hasCritique}
                 </div>
               </div>
-            `;            
+            `;
 
-            ChatMessage.create({
-              user:game.user._id,
-              speaker:ChatMessage.getSpeaker({ actor: this.actor }),
-              content:contentChatMessage
-            }, {})
+            dataChatMessage.user = game.user._id;
+            dataChatMessage.speaker = ChatMessage.getSpeaker({ actor: this.actor });
+            dataChatMessage.content = contentChatMessage;
+                          
+            switch(typeJet) {
+              case "GM":
+                dataChatMessage.whisper = ChatMessage.getWhisperRecipients("GM");
+                break;
+            }
+
+            ChatMessage.create(dataChatMessage, {})
           },
           icon: `<i class="fas fa-check"></i>`
         },
@@ -462,5 +482,51 @@ export class AquablueActorSheet extends ActorSheet {
     if(chamanisme.v1 || chamanisme.v2 || chamanisme.v3) { result = true; }
 
     return result;
+  }
+
+  _options(event) {
+    let pub = "selected";
+    let GM = "";
+
+    if(this.actor.getFlag("world", "typeJet") === "GM") {
+      pub = "";
+      GM = "selected";
+    }
+
+    const dialog = `
+      <select id="typeJet" style="width: 100%;
+      text-align: center;
+      margin-bottom: 3px;">
+        <option value="0" ${pub}>${game.i18n.localize("AQUABLUE.OPTIONS.Jetspublics")}</option>
+        <option value="1" ${GM}>${game.i18n.localize("AQUABLUE.OPTIONS.Jetsprives")}</option>
+      </select>
+      `;
+
+     new Dialog({
+      title: game.i18n.localize("AQUABLUE.OPTIONS.Label"),
+      content: dialog,
+      buttons: {
+        button1: {
+          label: game.i18n.localize("AQUABLUE.ROLL.DIALOG.Valider"),
+          callback: async (html) => {
+            const typeJet = +html.find("select#typeJet").val();
+            let resultTypeJet = "";
+
+            switch(typeJet) {
+              case 1: 
+                resultTypeJet = "GM";
+                break;
+            }
+
+            this.actor.setFlag("world", "typeJet", resultTypeJet);
+          },
+          icon: `<i class="fas fa-check"></i>`
+        },
+        button2: {
+          label: game.i18n.localize("AQUABLUE.ROLL.DIALOG.Annuler"),
+          icon: `<i class="fas fa-times"></i>`
+        }
+      }
+    }).render(true);
   }
 }

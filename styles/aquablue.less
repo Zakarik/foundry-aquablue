@@ -67,6 +67,7 @@
     
     .aData {
       height:100%;
+      position:relative;
   
       .header-fields {
         align-self: flex-start;
@@ -127,6 +128,15 @@
   
       nav {
         margin-bottom:0px;
+        flex:none;
+      }
+
+      .options {
+        position:absolute;
+        right:0px;
+        font-size:25px;
+        z-index:90;
+        cursor:pointer;
       }
     }
   }

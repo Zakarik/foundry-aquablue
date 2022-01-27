@@ -177,6 +177,11 @@
       "EQUIPEMENT":{
         "Nom":"Équipement"
       }
+    },
+    "OPTIONS":{
+      "Label":"Options",
+      "Jetsprives":"Les jets seront privés (PJ + MJ uniquement)",
+      "Jetspublics":"Les jets seront publics"
     }
   }
 }
