@@ -1,7 +1,7 @@
 {
   "name": "aquablue",
   "title": "Aquablue",
-  "description": "A minimalist game system which provides configurable Actor and Item templates to support free-form system agnostic game-play.",
+  "description": "Une implémentation officielle, supportée par l'éditeur, pour le jeu Aquablue.",
   "version": "1.0.0",
   "minimumCoreVersion": "0.9",
   "compatibleCoreVersion": "9",
