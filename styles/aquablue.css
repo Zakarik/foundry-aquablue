@@ -121,13 +121,6 @@
   margin-bottom: 0px;
   flex: none;
 }
-.actor header.sheet-header .aData .options {
-  position: absolute;
-  right: 0px;
-  font-size: 25px;
-  z-index: 90;
-  cursor: pointer;
-}
 .actor section.sheet-body .description .flexrow {
   justify-content: space-between;
   align-items: baseline;

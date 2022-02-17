@@ -100,9 +100,9 @@ export class AquablueActorSheet extends ActorSheet {
     });
 
     html.find('.roll').hover(ev => {
-      $(ev.currentTarget).attr('src','systems/aquablue/assets/icons/D6White.png');
+      $(ev.currentTarget).attr('src','systems/aquablue/assets/icons/D6White.svg');
     }, ev => {
-      $(ev.currentTarget).attr('src','systems/aquablue/assets/icons/D6Black.png');
+      $(ev.currentTarget).attr('src','systems/aquablue/assets/icons/D6Black.svg');
     });
 
     html.find('.extendButton').click(ev => {
@@ -145,18 +145,15 @@ export class AquablueActorSheet extends ActorSheet {
     });
 
     html.find('.rollProdige').hover(ev => {
-      $(ev.currentTarget).children("img").attr('src','systems/aquablue/assets/icons/D6White.png');
+      $(ev.currentTarget).children("img").attr('src','systems/aquablue/assets/icons/D6White.svg');
     }, ev => {
-      $(ev.currentTarget).children("img").attr('src','systems/aquablue/assets/icons/D6Black.png');
+      $(ev.currentTarget).children("img").attr('src','systems/aquablue/assets/icons/D6Black.svg');
     });
     
     // ROLL
     html.find('.roll').click(this._onRoll.bind(this));
 
     html.find('.rollProdige').click(this._onRollProdige.bind(this));
-
-    // OPTIONS
-    html.find('.options').click(this._options.bind(this));
   }
 
   /* -------------------------------------------- */
@@ -217,54 +214,16 @@ export class AquablueActorSheet extends ActorSheet {
                 title = game.i18n.localize(`AQUABLUE.ROLL.TYPE.${maitrise}.Normal`);
                 break;
             }
+            const roll = await new game.aquablue.RollAquablue(rollValue, this.actor.data.data);
 
-            let roll = new Roll(rollValue, this.actor.data.data);
-
-            roll.evaluate({async:false});
-            const toolTip = await roll.getTooltip();
-            const result = roll.result;
-            const typeJet = this.actor.getFlag("world", "typeJet")
-            
-            const checkResults = roll.terms[0].results;
-            let listDices = [];
-            let hasCritique = ``;
-            let dataChatMessage = {};
-
-            for(let i = 0;i < checkResults.length;i++) { listDices.push(checkResults[i].result); }
-            
-            if(
-              listDices.filter(x => x==1).length >= 3 ||
-              listDices.filter(x => x==2).length >= 3 ||
-              listDices.filter(x => x==3).length >= 3 ||
-              listDices.filter(x => x==4).length >= 3 ||
-              listDices.filter(x => x==5).length >= 3 ||
-              listDices.filter(x => x==7).length >= 3
-              ) {
-                hasCritique = `<h4 class="dice-total" style="margin-top:5px">${game.i18n.localize(`AQUABLUE.ROLL.Critique`)}</h4>`;
+            roll.aquablue.label = title;
+            await roll.toMessage({
+              speaker: {
+              actor: this.actor?.id || null,
+              token: this.actor?.token?.id || null,
+              alias: this.actor?.name || null,
               }
-
-            const contentChatMessage = `
-              <div class="dice-roll">
-                <div class="dice-result">
-                  <div class="dice-formula">${title}</div>
-                      ${toolTip}
-                  <h4 class="dice-total">${result}</h4>
-                  ${hasCritique}
-                </div>
-              </div>
-            `;
-
-            dataChatMessage.user = game.user._id;
-            dataChatMessage.speaker = ChatMessage.getSpeaker({ actor: this.actor });
-            dataChatMessage.content = contentChatMessage;
-                          
-            switch(typeJet) {
-              case "GM":
-                dataChatMessage.whisper = ChatMessage.getWhisperRecipients("GM");
-                break;
-            }
-
-            ChatMessage.create(dataChatMessage, {});
+            });
           },
           icon: `<i class="fas fa-check"></i>`
         },
@@ -333,58 +292,18 @@ export class AquablueActorSheet extends ActorSheet {
                 break;
             }
 
-            let roll = new Roll(rollValue, this.actor.data.data);
+            const roll = await new game.aquablue.RollAquablue(rollValue, this.actor.data.data);
 
-            roll.evaluate({async:false});
-            let toolTip = await roll.getTooltip();
-            const result = roll.result;
-            
-            const checkResults = roll.terms[0].results;
-            let listDices = [];
-            let hasCritique = ``;
-            let dataChatMessage = {};
+            roll.aquablue.label = title;
+            if(this._isChamane()) { roll.aquablue.isChamane = true; }
 
-            for(let i = 0;i < checkResults.length;i++) { listDices.push(checkResults[i].result); }
-            
-            if(
-              listDices.filter(x => x==1).length >= 3 ||
-              listDices.filter(x => x==2).length >= 3 ||
-              listDices.filter(x => x==3).length >= 3 ||
-              listDices.filter(x => x==4).length >= 3 ||
-              listDices.filter(x => x==5).length >= 3 ||
-              listDices.filter(x => x==7).length >= 3
-              ) {
-                hasCritique = `<h4 class="dice-total" style="margin-top:5px">${game.i18n.localize(`AQUABLUE.ROLL.Critique`)}</h4>`;
+            await roll.toMessage({
+              speaker: {
+              actor: this.actor?.id || null,
+              token: this.actor?.token?.id || null,
+              alias: this.actor?.name || null,
               }
-
-            toolTip = toolTip.replace(`<div class="dice-tooltip"`, `<div class="dice-tooltip expanded"`);
-
-            if(this._isChamane()) {
-              toolTip = toolTip.replace(`<ol class="dice-rolls">`, `<ol class="dice-rolls aquablueProdigeRoll">`);
-            }
-
-            const contentChatMessage = `
-              <div class="dice-roll">
-                <div class="dice-result">
-                  <div class="dice-formula">${title}</div>
-                      ${toolTip}
-                  <h4 class="dice-total">${result}</h4>
-                  ${hasCritique}
-                </div>
-              </div>
-            `;
-
-            dataChatMessage.user = game.user._id;
-            dataChatMessage.speaker = ChatMessage.getSpeaker({ actor: this.actor });
-            dataChatMessage.content = contentChatMessage;
-                          
-            switch(typeJet) {
-              case "GM":
-                dataChatMessage.whisper = ChatMessage.getWhisperRecipients("GM");
-                break;
-            }
-
-            ChatMessage.create(dataChatMessage, {})
+            });
           },
           icon: `<i class="fas fa-check"></i>`
         },
@@ -482,51 +401,5 @@ export class AquablueActorSheet extends ActorSheet {
     if(chamanisme.v1 || chamanisme.v2 || chamanisme.v3) { result = true; }
 
     return result;
-  }
-
-  _options(event) {
-    let pub = "selected";
-    let GM = "";
-
-    if(this.actor.getFlag("world", "typeJet") === "GM") {
-      pub = "";
-      GM = "selected";
-    }
-
-    const dialog = `
-      <select id="typeJet" style="width: 100%;
-      text-align: center;
-      margin-bottom: 3px;">
-        <option value="0" ${pub}>${game.i18n.localize("AQUABLUE.OPTIONS.Jetspublics")}</option>
-        <option value="1" ${GM}>${game.i18n.localize("AQUABLUE.OPTIONS.Jetsprives")}</option>
-      </select>
-      `;
-
-     new Dialog({
-      title: game.i18n.localize("AQUABLUE.OPTIONS.Label"),
-      content: dialog,
-      buttons: {
-        button1: {
-          label: game.i18n.localize("AQUABLUE.ROLL.DIALOG.Valider"),
-          callback: async (html) => {
-            const typeJet = +html.find("select#typeJet").val();
-            let resultTypeJet = "";
-
-            switch(typeJet) {
-              case 1: 
-                resultTypeJet = "GM";
-                break;
-            }
-
-            this.actor.setFlag("world", "typeJet", resultTypeJet);
-          },
-          icon: `<i class="fas fa-check"></i>`
-        },
-        button2: {
-          label: game.i18n.localize("AQUABLUE.ROLL.DIALOG.Annuler"),
-          icon: `<i class="fas fa-times"></i>`
-        }
-      }
-    }).render(true);
   }
 }

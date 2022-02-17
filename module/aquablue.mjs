@@ -2,6 +2,7 @@
 import { AquablueActor } from "./documents/actor.mjs";
 import { AquablueItem } from "./documents/item.mjs";
 import { AquablueCombat } from "./documents/combatAquablue.mjs";
+import { RollAquablue } from "./documents/roll.mjs";
 // Import sheet classes.
 import { AquablueActorSheet } from "./sheets/actor-sheet.mjs";
 import { AquablueDonsSheet } from "./sheets/items/dons-sheet.mjs";
@@ -32,7 +33,8 @@ Hooks.once('init', async function() {
     documents:{
       AquablueActor,
       AquablueItem
-    }
+    },
+    RollAquablue
   };
 
   // Add custom constants for configuration.
@@ -47,7 +49,8 @@ Hooks.once('init', async function() {
     decimals: 2
   };
 
-  console.log(CONFIG.Combat.initiative);
+  // Define custom Roll class
+  CONFIG.Dice.rolls.unshift(RollAquablue);
 
   // Define custom Document classes
   CONFIG.Actor.documentClass = AquablueActor;

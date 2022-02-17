@@ -1,0 +1,13 @@
+<div class="dice-roll">
+    {{#if flavor}}
+    <div class="dice-flavor">{{flavor}}</div>
+    {{/if}}
+    <div class="dice-result">
+        <div class="dice-formula">{{aquablue.label}}</div>
+        {{{tooltip}}}
+        <h4 class="dice-total">{{total}}</h4>
+        {{#if aquablue.hasCritique}}
+            <h4 class="dice-total" style="margin-top:5px">{{localize "AQUABLUE.ROLL.Critique"}}</h4>
+        {{/if}}
+    </div>
+</div>

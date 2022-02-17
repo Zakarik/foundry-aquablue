@@ -4,7 +4,6 @@
     <header class="sheet-header flexrow">
         <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
         <div class="flexcol aData">
-            <i class="fas fa-cog options" title="{{localize "AQUABLUE.OPTIONS.Label"}}"></i>
             <h1 class="charname">
                 <input name="name" type="text" value="{{data.name}}" placeholder="{{localize "AQUABLUE.Nom"}}" />
             </h1>
@@ -119,7 +118,7 @@
                 {{#each data.data.maitrises as | key maitrise|}}
                     <div class="flexcol {{maitrise}}">
                         <h3 class="header">
-                            <img class="roll" data-type="{{maitrise}}" data-value="{{key.value}}" src="systems/aquablue/assets/icons/D6Black.png">
+                            <img class="roll" data-type="{{maitrise}}" data-value="{{key.value}}" src="systems/aquablue/assets/icons/D6Black.svg">
                             <label for="{{maitrise}}">{{key.label}}</label>
                             <input type="number" min="{{key.min}}" id="{{maitrise}}" name="data.maitrises.{{maitrise}}.value" value="{{key.value}}" data-dtype="Number"/>
                         </h3>
@@ -163,7 +162,7 @@
                         <div>
                             <header class="extendParent" data-item-id="{{prodige._id}}">
                                 <h3 class="titleProdige rollProdige" data-name="{{prodige.name}}" data-type="terre">
-                                    <img src="systems/aquablue/assets/icons/D6Black.png">
+                                    <img src="systems/aquablue/assets/icons/D6Black.svg">
 
                                     {{prodige.name}}
                                 </h3>
@@ -192,7 +191,7 @@
                         <div>
                             <header class="extendParent" data-item-id="{{prodige._id}}">
                                 <h3 class="titleProdige rollProdige" data-name="{{prodige.name}}" data-type="air">
-                                    <img src="systems/aquablue/assets/icons/D6Black.png">
+                                    <img src="systems/aquablue/assets/icons/D6Black.svg">
 
                                     {{prodige.name}}
                                 </h3>
@@ -221,7 +220,7 @@
                         <div>
                             <header class="extendParent" data-item-id="{{prodige._id}}">
                                 <h3 class="titleProdige rollProdige" data-name="{{prodige.name}}" data-type="eau">
-                                    <img src="systems/aquablue/assets/icons/D6Black.png">
+                                    <img src="systems/aquablue/assets/icons/D6Black.svg">
 
                                     {{prodige.name}}
                                 </h3>
