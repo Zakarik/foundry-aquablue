@@ -35,8 +35,7 @@ export class AquablueItem extends Item {
                 case "prodigeeau":
                     data.img = "systems/aquablue/assets/icons/water.svg";
                     break;
-            }
-            
+            }            
         }
 
         await super.create(data, options);

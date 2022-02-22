@@ -10,7 +10,8 @@ export class AquablueActorSheet extends ActorSheet {
       template: "systems/aquablue/templates/actor-sheet.html",
       width: 700,
       height: 600,
-      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
+      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
+      dragDrop: [{dragSelector: ".draggable", dropSelector: null}],
     });
   }
 
@@ -154,6 +155,30 @@ export class AquablueActorSheet extends ActorSheet {
     html.find('.roll').click(this._onRoll.bind(this));
 
     html.find('.rollProdige').click(this._onRollProdige.bind(this));
+  }
+
+  _onDragStart(event) {
+    const li = event.currentTarget;
+
+    if ( event.target.classList.contains("content-link") ) return;
+
+    const maitrise = $(li).data("type");
+    const isProdige = $(li)?.data("isprodige") || false;
+    const label = $(li)?.data("name") || "";
+
+    // Create drag data
+    const dragData = {
+      actorId: this.actor.id,
+      sceneId: this.actor.isToken ? canvas.scene?.id : null,
+      tokenId: this.actor.isToken ? this.actor.token.id : null,
+      label:label,
+      type:maitrise,
+      isProdige:isProdige,
+      itemId:$(li)?.data("itemid") || 0
+    };
+    
+    // Set data transfer
+    event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
   }
 
   /* -------------------------------------------- */
@@ -380,6 +405,37 @@ export class AquablueActorSheet extends ActorSheet {
       type: type,
       data: data
     };
+
+    switch(type) {
+      case "equipement":
+          itemData.img = "systems/aquablue/assets/icons/equipement.svg";
+          break;
+
+      case "armeprotection":
+          itemData.img = "systems/aquablue/assets/icons/weapons.svg";
+          break;
+
+      case "dons":
+          itemData.img = "systems/aquablue/assets/icons/feat.svg";
+          break;
+
+      case "defauts":
+          itemData.img = "systems/aquablue/assets/icons/fault.svg";
+          break;
+
+      case "prodigeterre":
+          itemData.img = "systems/aquablue/assets/icons/ground.svg";
+          break;
+
+      case "prodigeair":
+          itemData.img = "systems/aquablue/assets/icons/air.svg";
+          break;
+
+      case "prodigeeau":
+          itemData.img = "systems/aquablue/assets/icons/water.svg";
+          break;
+    }
+
     // Remove the type from the dataset since it's in the itemData.type prop.
     delete itemData.data["type"];
   

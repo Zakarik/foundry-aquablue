@@ -118,7 +118,7 @@
                 {{#each data.data.maitrises as | key maitrise|}}
                     <div class="flexcol {{maitrise}}">
                         <h3 class="header">
-                            <img class="roll" data-type="{{maitrise}}" data-value="{{key.value}}" src="systems/aquablue/assets/icons/D6Black.svg">
+                            <img class="roll draggable" data-name="{{key.label}}" data-type="{{maitrise}}" data-value="{{key.value}}" src="systems/aquablue/assets/icons/D6Black.svg">
                             <label for="{{maitrise}}">{{key.label}}</label>
                             <input type="number" min="{{key.min}}" id="{{maitrise}}" name="data.maitrises.{{maitrise}}.value" value="{{key.value}}" data-dtype="Number"/>
                         </h3>
@@ -161,7 +161,7 @@
                     {{#each actor.prodigeTerre as |prodige id|}}
                         <div>
                             <header class="extendParent" data-item-id="{{prodige._id}}">
-                                <h3 class="titleProdige rollProdige" data-name="{{prodige.name}}" data-type="terre">
+                                <h3 class="titleProdige rollProdige draggable" data-isProdige="true" data-itemId="{{prodige._id}}" data-name="{{prodige.name}}" data-type="terre">
                                     <img src="systems/aquablue/assets/icons/D6Black.svg">
 
                                     {{prodige.name}}
