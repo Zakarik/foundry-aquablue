@@ -517,6 +517,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 .actor section.sheet-body .armesProtectionsEquipement .armeprotection > div {
   display: flex;
@@ -578,6 +579,9 @@
 .actor section.sheet-body .armesProtectionsEquipement .armeprotection > div .toExtend {
   border-top: 1px dotted black;
   word-break: break-all;
+}
+.actor section.sheet-body .armesProtectionsEquipement .armeprotection > div:not(:first-of-type):not(:nth-of-type(2)) {
+  margin-top: 5px;
 }
 .prodige h1.charname {
   display: flex;
