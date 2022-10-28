@@ -7,14 +7,14 @@
             <h1 class="charname">
                 <input name="name" type="text" value="{{data.name}}" placeholder="{{localize "AQUABLUE.Nom"}}" />
             </h1>
-            
+
             <div class="flexrow">
                 <div class="header-fields lCol flexcol">
                     <div class="cData">
                         <span class="header-lTitle">{{localize "AQUABLUE.TYPE.Label"}} : </span>
-                        <select name="data.type">
+                        <select name="system.type">
                             <option value=""></option>
-                            {{#if (pnj data.type)}}
+                            {{#if (pnj system.type)}}
                                 <option value="animal" {{#if (animal systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Animal"}}</option>
                                 <option value="autre" {{#if (autre systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Autre"}}</option>
                             {{/if}}
@@ -27,21 +27,21 @@
 
                     <div class="cData">
                         <span class="header-lTitle">{{localize "AQUABLUE.Richesse"}} : </span>
-                        <input type="number" name="data.richesse" value="{{systemData.richesse}}"/>
+                        <input type="number" name="system.richesse" value="{{systemData.richesse}}"/>
                     </div>
                 </div>
 
                 <div class="header-fields rCol flexcol">
                     <div class="cData">
                         <span class="header-lTitle">{{localize "AQUABLUE.Occupation"}} : </span>
-                        <input type="text" name="data.occupation" value="{{systemData.occupation}}"/>
+                        <input type="text" name="system.occupation" value="{{systemData.occupation}}"/>
                     </div>
 
                     <div class="resource">
                         <span class="header-lTitle">{{localize "AQUABLUE.PointsEnergie"}} : </span>
-                        <input type="number" name="data.energie.value" min="{{systemData.energie.min}}" max="{{systemData.energie.max}}" value="{{systemData.energie.value}}"/>
+                        <input type="number" name="system.energie.value" min="{{systemData.energie.min}}" max="{{systemData.energie.max}}" value="{{systemData.energie.value}}"/>
                         <span> / </span>
-                        <input type="number" name="data.energie.max" min="{{systemData.energie.min}}" value="{{systemData.energie.max}}"/>
+                        <input type="number" name="system.energie.max" min="{{systemData.energie.min}}" value="{{systemData.energie.max}}"/>
                     </div>
                 </div>
             </div>
@@ -56,11 +56,11 @@
         </div>
     </header>
 
-    
+
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
-        
+
         {{!-- Personnage Tab --}}
         <div class="tab description" data-group="primary" data-tab="personnage">
             <div class="flexrow">
@@ -79,12 +79,12 @@
                                     <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                                 </div>
                             </header>
-                            
-                            <span>{{{dons.data.description}}}</span>
+
+                            <span>{{{dons.system.description}}}</span>
                         </div>
                     {{/each}}
                 </div>
-    
+
                 <div class="flexcol defauts">
                     <h2 class="header-tTitle">
                         {{localize "AQUABLUE.Defauts"}}
@@ -101,7 +101,7 @@
                                 </div>
                             </header>
 
-                            <span>{{{defauts.data.description}}}</span>
+                            <span>{{{defauts.system.description}}}</span>
                         </div>
                     {{/each}}
                 </div>
@@ -109,18 +109,18 @@
 
             <h2 class="header-tTitle">{{localize "AQUABLUE.Description"}}</h2>
 
-            {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor systemData.description target="system.description" button=true owner=owner editable=editable}}
         </div>
 
         <div class="tab maitrises" data-group="primary" data-tab="maitrises">
             <h2 class="header-tTitle">{{localize "AQUABLUE.MAÎTRISE.Nom"}}</h2>
             <div class="flexrow">
-                {{#each data.data.maitrises as | key maitrise|}}
+                {{#each systemData.maitrises as | key maitrise|}}
                     <div class="flexcol {{maitrise}}">
                         <h3 class="header">
                             <img class="roll draggable" data-name="{{key.label}}" data-type="{{maitrise}}" data-value="{{key.value}}" src="systems/aquablue/assets/icons/D6Black.svg">
                             <label for="{{maitrise}}">{{key.label}}</label>
-                            <input type="number" min="{{key.min}}" id="{{maitrise}}" name="data.maitrises.{{maitrise}}.value" value="{{key.value}}" data-dtype="Number"/>
+                            <input type="number" min="{{key.min}}" id="{{maitrise}}" name="system.maitrises.{{maitrise}}.value" value="{{key.value}}" data-dtype="Number"/>
                         </h3>
                         {{#each key.competences as | keyCat cat|}}
                             <h4>{{keyCat.label}}</h4>
@@ -129,15 +129,15 @@
                                 <span class="title">{{keyComp.label}}</span>
                                 <div class="flexrow flex-between ranks">
                                     <label>
-                                        <input type="checkbox" class="checkV1 {{comp}}v1" name="data.maitrises.{{maitrise}}.competences.{{cat}}.liste.{{comp}}.v1" value="true" {{#if keyComp.v1}} checked {{/if}} />
+                                        <input type="checkbox" class="checkV1 {{comp}}v1" name="system.maitrises.{{maitrise}}.competences.{{cat}}.liste.{{comp}}.v1" value="true" {{#if keyComp.v1}} checked {{/if}} />
                                         <span></span>
                                     </label>
                                     <label>
-                                        <input type="checkbox" class="checkV2 {{comp}}v2" name="data.maitrises.{{maitrise}}.competences.{{cat}}.liste.{{comp}}.v2" value="true" {{#if keyComp.v2}} checked {{/if}} />
+                                        <input type="checkbox" class="checkV2 {{comp}}v2" name="system.maitrises.{{maitrise}}.competences.{{cat}}.liste.{{comp}}.v2" value="true" {{#if keyComp.v2}} checked {{/if}} />
                                         <span></span>
                                     </label>
                                     <label>
-                                        <input type="checkbox" class="checkV3 {{comp}}v3" name="data.maitrises.{{maitrise}}.competences.{{cat}}.liste.{{comp}}.v3" value="true" {{#if keyComp.v3}} checked {{/if}} />
+                                        <input type="checkbox" class="checkV3 {{comp}}v3" name="system.maitrises.{{maitrise}}.competences.{{cat}}.liste.{{comp}}.v3" value="true" {{#if keyComp.v3}} checked {{/if}} />
                                         <span></span>
                                     </label>
                                 </div>
@@ -168,14 +168,14 @@
                                 </h3>
 
                                 <i class="far fa-plus-square extendButton"></i>
-                                
+
                                 <div class="gestionButton">
                                     <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                                 </div>
                             </header>
-                            <span style="display:none;" class="prodigeRang">{{localize "AQUABLUE.ITEM.PRODIGE.PE"}} : {{prodige.data.rang}}</span>
-                            <span style="display:none;">{{{prodige.data.description}}}</span>
+                            <span style="display:none;" class="prodigeRang">{{localize "AQUABLUE.ITEM.PRODIGE.PE"}} : {{prodige.system.rang}}</span>
+                            <span style="display:none;">{{{prodige.system.description}}}</span>
                         </div>
                     {{/each}}
                 </div>
@@ -197,14 +197,14 @@
                                 </h3>
 
                                 <i class="far fa-plus-square extendButton"></i>
-                                
+
                                 <div class="gestionButton">
                                     <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                                 </div>
                             </header>
-                            <span style="display:none;" class="prodigeRang">{{localize "AQUABLUE.ITEM.PRODIGE.PE"}} : {{prodige.data.rang}}</span>
-                            <span style="display:none;">{{{prodige.data.description}}}</span>
+                            <span style="display:none;" class="prodigeRang">{{localize "AQUABLUE.ITEM.PRODIGE.PE"}} : {{prodige.system.rang}}</span>
+                            <span style="display:none;">{{{prodige.system.description}}}</span>
                         </div>
                     {{/each}}
                 </div>
@@ -212,7 +212,7 @@
                 <div class="flexcol eau">
                     <h3 class="header">
                         {{localize "AQUABLUE.ITEM.PRODIGE.Eau"}}
-                    
+
                         <a class="item-control item-create" data-type="prodigeeau"><i class="fas fa-plus"></i></a>
                     </h3>
 
@@ -226,14 +226,14 @@
                                 </h3>
 
                                 <i class="far fa-plus-square extendButton"></i>
-                                
+
                                 <div class="gestionButton">
                                     <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                                 </div>
                             </header>
-                            <span style="display:none;" class="prodigeRang">{{localize "AQUABLUE.ITEM.PRODIGE.PE"}} : {{prodige.data.rang}}</span>
-                            <span style="display:none;">{{{prodige.data.description}}}</span>
+                            <span style="display:none;" class="prodigeRang">{{localize "AQUABLUE.ITEM.PRODIGE.PE"}} : {{prodige.system.rang}}</span>
+                            <span style="display:none;">{{{prodige.system.description}}}</span>
                         </div>
                     {{/each}}
                 </div>
@@ -252,13 +252,13 @@
                             <h3 class="titleEquipement">{{equip.name}}</h3>
 
                             <i class="far fa-plus-square extendButton"></i>
-                            
+
                             <div class="gestionButton">
                                 <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
                                 <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                             </div>
                         </header>
-                        <span style="display:none;">{{{equip.data.description}}}</span>
+                        <span style="display:none;">{{{equip.system.description}}}</span>
                     </div>
                 {{/each}}
             </div>
@@ -274,7 +274,7 @@
                             <h3 class="titleArmeProtection">{{materiel.name}}</h3>
 
                             <i class="far fa-plus-square extendButtonSpec"></i>
-                            
+
                             <div class="gestionButton">
                                 <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
                                 <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
@@ -282,13 +282,13 @@
                         </header>
                         <div class="data">
                             <h4>{{localize "AQUABLUE.ITEM.ARMEPROTECTION.DegatsProtections"}}</h4>
-                            <span>{{materiel.data.degatsProtections}}</span>
+                            <span>{{materiel.system.degatsProtections}}</span>
                         </div>
                         <div class="data">
                             <h4>{{localize "AQUABLUE.ITEM.ARMEPROTECTION.Portee"}}</h4>
-                            <span>{{materiel.data.portee}}</span>
+                            <span>{{materiel.system.portee}}</span>
                         </div>
-                        <span class="toExtend" style="display:none;">{{{materiel.data.traits}}}</span>
+                        <span class="toExtend" style="display:none;">{{{materiel.system.traits}}}</span>
                     </div>
                 {{/each}}
             </div>

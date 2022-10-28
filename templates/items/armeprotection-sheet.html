@@ -8,18 +8,18 @@
             <div class="flexrow details">
                 <div class="flexcol">
                     <h2>{{localize "AQUABLUE.ITEM.ARMEPROTECTION.DegatsProtections"}}</h2>
-                    <input type="text" name="data.degatsProtections" value="{{systemData.degatsProtections}}" />
+                    <input type="text" name="system.degatsProtections" value="{{systemData.degatsProtections}}" />
                 </div>
 
                 <div class="flexcol">
                     <h2>{{localize "AQUABLUE.ITEM.ARMEPROTECTION.Portee"}}</h2>
-                    <input type="text" name="data.portee" value="{{systemData.portee}}" />
+                    <input type="text" name="system.portee" value="{{systemData.portee}}" />
                 </div>
             </div>
             <div class="description">
                 <h2>{{localize "AQUABLUE.ITEM.ARMEPROTECTION.Traits"}}</h2>
-    
-                {{editor content=systemData.traits target="data.traits" button=true owner=owner editable=editable}}
+
+                {{editor systemData.traits target="system.traits" button=true owner=owner editable=editable}}
             </div>
         </div>
     </header>

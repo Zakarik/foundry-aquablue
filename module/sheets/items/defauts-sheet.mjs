@@ -20,7 +20,7 @@ export class AquablueDefautsSheet extends ItemSheet {
   getData() {
     const context = super.getData();
 
-    context.systemData = context.data.data;
+    context.systemData = context.data.system;
 
     return context;
   }

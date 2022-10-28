@@ -7,14 +7,14 @@
             <h1 class="charname">
                 <input name="name" type="text" value="{{data.name}}" placeholder="{{localize "AQUABLUE.Nom"}}" />
             </h1>
-            
+
             <div class="flexrow">
                 <div class="header-fields lCol flexcol">
                     <div class="cData">
                         <span class="header-lTitle">{{localize "AQUABLUE.Type"}} : </span>
-                        <select name="data.type">
+                        <select name="system.type">
                             <option value=""></option>
-                            {{#if (pnj data.type)}}
+                            {{#if (pnj system.type)}}
                                 <option value="animal" {{#if (animal systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Animal"}}</option>
                                 <option value="autre" {{#if (autre systemData.type)}} selected{{/if}}>{{localize "AQUABLUE.TYPE.Autre"}}</option>
                             {{/if}}
@@ -33,12 +33,12 @@
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
-        
+
         {{!-- Personnage Tab --}}
-        <div class="description" data-group="primary" data-tab="personnage">    
+        <div class="description" data-group="primary" data-tab="personnage">
             <h2 class="header-tTitle">{{localize "AQUABLUE.Description"}}</h2>
 
-            {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor systemData.description target="system.description" button=true owner=owner editable=editable}}
         </div>
     </section>
 

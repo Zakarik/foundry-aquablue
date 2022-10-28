@@ -8,7 +8,7 @@ export class RollAquablue extends Roll {
             label: "",
             hasCritique: false,
             isChamane: false
-        }        
+        }
     }
 
     async render(chatOptions = {}) {
@@ -35,7 +35,7 @@ export class RollAquablue extends Roll {
             toolTip = toolTip.replace(`<ol class="dice-rolls">`, `<ol class="dice-rolls aquablueProdigeRoll">`);
         }
 
-        
+
 
         // Define chat data
         const chatData = {
@@ -82,8 +82,8 @@ export class RollAquablue extends Roll {
         this.terms.forEach((dices) => {
             let list = [];
 
-            for(let i = 0;i < dices.results.length;i++) { 
-                list.push(dices.results[i].result); 
+            for(let i = 0;i < dices.results.length;i++) {
+                list.push(dices.results[i].result);
             }
 
             if(
@@ -106,7 +106,7 @@ export class RollAquablue extends Roll {
         if (!this._evaluated) {
             await this.evaluate();
         }
-        
+
         // RollMode
         const rMode = rollMode || messageData.rollMode || game.settings.get("core", "rollMode");
         if (rMode) {
@@ -129,7 +129,7 @@ export class RollAquablue extends Roll {
             rollMode: rMode
         });
 
-        if(this.aquablue.isChamane) { message._rollExpanded = true; }        
+        if(this.aquablue.isChamane) { message._rollExpanded = true; }
 
         return create ? message : message.data;
     }

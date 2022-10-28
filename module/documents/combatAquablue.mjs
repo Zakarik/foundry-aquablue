@@ -9,21 +9,21 @@
         ids = typeof ids === "string" ? [ids] : ids;
         const currentId = this.combatant?.id;
         const rollMode = messageOptions.rollMode || game.settings.get("core", "rollMode");
-    
+
         // Iterate over Combatants, performing an initiative roll for each
         const updates = [];
         const messages = [];
         for ( let [i, id] of ids.entries() ) {
-    
+
           // Get Combatant data (non-strictly)
           const combatant = this.combatants.get(id);
           if ( !combatant?.isOwner ) return results;
-    
+
           // Produce an initiative roll for the Combatant
           const roll = combatant.getInitiativeRoll(formula);
           await roll.evaluate({async: true});
           updates.push({_id: id, initiative: roll.total});
-    
+
           // Construct chat message data
           let messageData = foundry.utils.mergeObject({
             speaker: {
@@ -39,21 +39,21 @@
             create: false,
             rollMode: combatant.hidden && (["roll", "publicroll"].includes(rollMode)) ? "gmroll" : rollMode
           });
-    
+
           // Play 1 sound for the whole rolled set
           if ( i > 0 ) chatData.sound = null;
           messages.push(chatData);
         }
         if ( !updates.length ) return this;
-    
+
         // Update multiple combatants
         await this.updateEmbeddedDocuments("Combatant", updates);
-    
+
         // Ensure the turn order remains with the same combatant
         if ( updateTurn && currentId ) {
           await this.update({turn: this.turns.findIndex(t => t.id === currentId)});
         }
-    
+
         // Create multiple chat messages
         await ChatMessage.implementation.create(messages);
         return this;
@@ -74,19 +74,19 @@
             let ra = 0;
             let rb = 0;
 
-            switch(actorA.data.data.type) {
+            switch(actorA.data.system.type) {
                 case "humain":
                     ra = 5;
                     break;
-        
+
                 case "métis":
                     ra = 4;
                     break;
-        
+
                 case "mēumes":
                     ra = 3;
                     break;
-        
+
                 case "robot":
                     ra = 2;
                     break;
@@ -94,25 +94,25 @@
                 case "animal":
                     ra = 1;
                     break;
-        
+
                 default:
                     ra = 0;
                     break;
             }
-        
-            switch(actorB.data.data.type) {
+
+            switch(actorB.data.system.type) {
                 case "humain":
                     rb = 5;
                     break;
-        
+
                 case "métis":
                     rb = 4;
                     break;
-        
+
                 case "mēumes":
                     rb = 3;
                     break;
-        
+
                 case "robots":
                     rb = 2;
                     break;
@@ -120,7 +120,7 @@
                 case "animal":
                     ra = 1;
                     break;
-        
+
                 default:
                     rb = 0;
                     break;
@@ -146,9 +146,9 @@
     setupTurns() {
         // Determine the turn order and the current turn
         const turns = this.combatants.contents.sort(this._sortCombatants);
-        
+
         if ( this.turn !== null) this.data.turn = Math.clamped(this.data.turn, 0, turns.length-1);
-    
+
           // Update state tracking
         let c = turns[this.data.turn];
         this.current = {

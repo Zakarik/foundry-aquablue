@@ -21,7 +21,7 @@ export class AquablueActorSheet extends ActorSheet {
   getData() {
     const context = super.getData();
 
-    for (let [key, mast] of Object.entries(context.data.data.maitrises)){
+    for (let [key, mast] of Object.entries(context.data.system.maitrises)){
       mast.label = game.i18n.localize(CONFIG.AQUABLUE.maîtrises[key]);
 
       for (let [keyCat, cat] of Object.entries(mast.competences)){
@@ -35,7 +35,7 @@ export class AquablueActorSheet extends ActorSheet {
 
     this._prepareCharacterItems(context);
 
-    context.systemData = context.data.data;
+    context.systemData = context.data.system;
 
     console.log(context);
 
@@ -108,7 +108,7 @@ export class AquablueActorSheet extends ActorSheet {
 
     html.find('.extendButton').click(ev => {
       // const name = ev.currentTarget.name.split(".");
-      
+
       $(ev.currentTarget).toggleClass("fa-plus-square fa-minus-square");
 
       if($(ev.currentTarget).hasClass("fa-minus-square")) {
@@ -120,7 +120,7 @@ export class AquablueActorSheet extends ActorSheet {
 
     html.find('.extendButtonSpec').click(ev => {
       // const name = ev.currentTarget.name.split(".");
-      
+
       $(ev.currentTarget).toggleClass("fa-plus-square fa-minus-square");
 
       if($(ev.currentTarget).hasClass("fa-minus-square")) {
@@ -150,7 +150,7 @@ export class AquablueActorSheet extends ActorSheet {
     }, ev => {
       $(ev.currentTarget).children("img").attr('src','systems/aquablue/assets/icons/D6Black.svg');
     });
-    
+
     // ROLL
     html.find('.roll').click(this._onRoll.bind(this));
 
@@ -176,7 +176,7 @@ export class AquablueActorSheet extends ActorSheet {
       isProdige:isProdige,
       itemId:$(li)?.data("itemid") || 0
     };
-    
+
     // Set data transfer
     event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
   }
@@ -185,8 +185,8 @@ export class AquablueActorSheet extends ActorSheet {
   _onRoll(event) {
     const element = event.currentTarget;
     const dataset = element.dataset;
-    const rollmaitrise = dataset.type;    
-    const rollAttribute = +dataset.value;    
+    const rollmaitrise = dataset.type;
+    const rollAttribute = +dataset.value;
     const rollDialog = `
       <select id="typeRoll" style="width: 100%;
       text-align: center;
@@ -197,7 +197,7 @@ export class AquablueActorSheet extends ActorSheet {
       </select>
       `;
     let maitrise;
-    
+
     switch(rollmaitrise) {
       case "physique":
         maitrise = "PHYSIQUE";
@@ -239,7 +239,7 @@ export class AquablueActorSheet extends ActorSheet {
                 title = game.i18n.localize(`AQUABLUE.ROLL.TYPE.${maitrise}.Normal`);
                 break;
             }
-            const roll = await new game.aquablue.RollAquablue(rollValue, this.actor.data.data);
+            const roll = await new game.aquablue.RollAquablue(rollValue, this.actor.system);
 
             roll.aquablue.label = title;
             await roll.toMessage({
@@ -264,8 +264,8 @@ export class AquablueActorSheet extends ActorSheet {
   _onRollProdige(event) {
     const element = event.currentTarget;
     const dataset = element.dataset;
-    const rollName = dataset.name;    
-    const rollAttr = dataset.type;    
+    const rollName = dataset.name;
+    const rollAttr = dataset.type;
     const rollDialog = `
       <select id="typeRoll" style="width: 100%;
       text-align: center;
@@ -317,7 +317,7 @@ export class AquablueActorSheet extends ActorSheet {
                 break;
             }
 
-            const roll = await new game.aquablue.RollAquablue(rollValue, this.actor.data.data);
+            const roll = await new game.aquablue.RollAquablue(rollValue, this.actor.system);
 
             roll.aquablue.label = title;
             if(this._isChamane()) { roll.aquablue.isChamane = true; }
@@ -438,7 +438,7 @@ export class AquablueActorSheet extends ActorSheet {
 
     // Remove the type from the dataset since it's in the itemData.type prop.
     delete itemData.data["type"];
-  
+
     // Finally, create the item!
     return await Item.create(itemData, {parent: this.actor});
   }
