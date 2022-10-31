@@ -1,5 +1,5 @@
 # Foundry system for Aquablue
-Knight  is a french RPG
+Aquablue is a french RPG
 
 If you want to help, contact me on Discord Foundry  Zakarik
 
