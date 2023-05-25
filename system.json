@@ -2,7 +2,7 @@
   "id": "aquablue",
   "title": "Aquablue",
   "description": "Une implémentation officielle, supportée par l'éditeur, pour le jeu Aquablue.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "esmodules": [
     "module/aquablue.mjs"
   ],
@@ -92,13 +92,13 @@
   ],
   "compatibility": {
     "minimum": "10",
-    "verified": "10"
+    "verified": "11"
   },
   "gridDistance": 5,
   "gridUnits": "m",
   "primaryTokenAttribute": "energie",
   "url": "https://github.com/Zakarik/foundry-aquablue",
   "manifest": "https://raw.githubusercontent.com/Zakarik/foundry-aquablue/main/system.json",
-  "download": "https://github.com/Zakarik/foundry-aquablue/archive/refs/tags/1.0.1.zip",
+  "download": "https://github.com/Zakarik/foundry-aquablue/archive/refs/tags/1.0.2.zip",
   "changelog": "https://raw.githubusercontent.com/Zakarik/foundry-aquablue/main/changelog.md"
 }
