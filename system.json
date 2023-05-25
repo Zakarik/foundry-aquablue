@@ -1,59 +1,77 @@
 {
-  "name": "aquablue",
+  "id": "aquablue",
   "title": "Aquablue",
   "description": "Une implémentation officielle, supportée par l'éditeur, pour le jeu Aquablue.",
-  "version": "1.0.0",
-  "esmodules": ["module/aquablue.mjs"],
-  "styles": ["styles/aquablue.css"],
+  "version": "1.0.1",
+  "esmodules": [
+    "module/aquablue.mjs"
+  ],
+  "styles": [
+    "styles/aquablue.css"
+  ],
   "packs": [
     {
-        "name": "dons",
-        "label": "Dons",
-        "path": "packs/dons.db",
-        "entity": "Item",
-        "system": "aquablue"
+      "name": "dons",
+      "label": "Dons",
+      "path": "packs/dons.db",
+      "system": "aquablue",
+      "type": "Item",
+      "private": false,
+      "flags": {}
     },
     {
-        "name": "defauts",
-        "label": "Défauts",
-        "path": "packs/defauts.db",
-        "entity": "Item",
-        "system": "aquablue"
+      "name": "defauts",
+      "label": "Défauts",
+      "path": "packs/defauts.db",
+      "system": "aquablue",
+      "type": "Item",
+      "private": false,
+      "flags": {}
     },
     {
-        "name": "prodiges",
-        "label": "Prodiges",
-        "path": "packs/prodiges.db",
-        "entity": "Item",
-        "system": "aquablue"
+      "name": "prodiges",
+      "label": "Prodiges",
+      "path": "packs/prodiges.db",
+      "system": "aquablue",
+      "type": "Item",
+      "private": false,
+      "flags": {}
     },
     {
-        "name": "armes",
-        "label": "Armes",
-        "path": "packs/armes.db",
-        "entity": "Item",
-        "system": "aquablue"
+      "name": "armes",
+      "label": "Armes",
+      "path": "packs/armes.db",
+      "system": "aquablue",
+      "type": "Item",
+      "private": false,
+      "flags": {}
     },
     {
-        "name": "armures",
-        "label": "Armures",
-        "path": "packs/armures.db",
-        "entity": "Item",
-        "system": "aquablue"
+      "name": "armures",
+      "label": "Armures",
+      "path": "packs/armures.db",
+      "system": "aquablue",
+      "type": "Item",
+      "private": false,
+      "flags": {}
     },
     {
-        "name": "equipements",
-        "label": "Équipements",
-        "path": "packs/equipements.db",
-        "entity": "Item",
-        "system": "aquablue"
+      "name": "equipements",
+      "label": "Équipements",
+      "path": "packs/equipements.db",
+      "system": "aquablue",
+      "type": "Item",
+      "private": false,
+      "flags": {}
     },
     {
-        "name": "vehicules",
-        "label": "Véhicules",
-        "path": "packs/vehicules.db",
-        "entity": "Item",
-        "system": "aquablue"
+      "name": "vehicules",
+      "label": "Véhicules",
+      "path": "packs/vehicules.db",
+      "system": "aquablue",
+      "type": "Item",
+      "private": false,
+      "flags": {}
     }
   ],
   "languages": [
@@ -61,7 +79,7 @@
       "lang": "fr",
       "name": "French",
       "path": "lang/fr.json",
-      "flags":{}
+      "flags": {}
     }
   ],
   "authors": [
@@ -81,5 +99,6 @@
   "primaryTokenAttribute": "energie",
   "url": "https://github.com/Zakarik/foundry-aquablue",
   "manifest": "https://raw.githubusercontent.com/Zakarik/foundry-aquablue/main/system.json",
-  "download": "https://github.com/Zakarik/foundry-aquablue/releases/download/v1.0.0/aquablue.zip"
+  "download": "https://github.com/Zakarik/foundry-aquablue/archive/refs/tags/1.0.1.zip",
+  "changelog": "https://raw.githubusercontent.com/Zakarik/foundry-aquablue/main/changelog.md"
 }
