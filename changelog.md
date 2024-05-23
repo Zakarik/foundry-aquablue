@@ -1,3 +1,6 @@
+# Version 1.1.0
+Compatibilité avec la V12.
+
 # Version 1.0.2
 Correction du systeme.json
 

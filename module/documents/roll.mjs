@@ -103,35 +103,33 @@ export class RollAquablue extends Roll {
 
     async toMessage(messageData = {}, { rollMode = null, create = true } = {}) {
         // Perform the roll, if it has not yet been rolled
-        if (!this._evaluated) {
-            await this.evaluate();
-        }
-
-        // RollMode
-        const rMode = rollMode || messageData.rollMode || game.settings.get("core", "rollMode");
-        if (rMode) {
-            messageData = ChatMessage.applyRollMode(messageData, rMode);
-        }
+        if ( !this._evaluated ) await this.evaluate({async: true});
 
         // Prepare chat data
-        const msg = foundry.utils.mergeObject(messageData,
-            {
-                user: game.user.id,
-                type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-                content: this._total,
-                sound: CONFIG.sounds.dice
-            }
-        );
-        msg.roll = this;
+        messageData = foundry.utils.mergeObject({
+        user: game.user.id,
+        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+        content: String(this.total),
+        sound: CONFIG.sounds.dice
+        }, messageData);
+        messageData.rolls = [this];
 
         // Either create the message or just return the chat data
-        const message = await ChatMessage.create(msg, {
-            rollMode: rMode
-        });
+        const cls = getDocumentClass("ChatMessage");
+        const msg = new cls(messageData);
 
-        if(this.aquablue.isChamane) { message._rollExpanded = true; }
+        // Either create or return the data
+        if ( create ) {
+            let cCls = await cls.create(msg.toObject(), { rollMode });
 
-        return create ? message : message.data;
+            if(this.aquablue.isChamane) { cCls._rollExpanded = true; }
+
+            return cCls;
+        }
+        else {
+            if ( rollMode ) msg.applyRollMode(rollMode);
+            return msg.toObject();
+        }
     }
 
     /** @override */

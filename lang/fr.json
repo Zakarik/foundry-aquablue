@@ -1,18 +1,19 @@
 {
-  "ACTOR":{
-    "TypePj":"PJ",
-    "TypePnj":"PNJ"
+  "TYPES":{
+    "Actor":{
+      "pj":"PJ",
+      "pnj":"PNJ"
+    },
+    "Item":{
+      "dons":"Dons",
+      "defauts":"Défauts",
+      "armeprotection":"Arme & Protection",
+      "equipement":"Équipement",
+      "prodigeterre":"Prodige de la Terre",
+      "prodigeair":"Prodige de l'Air",
+      "prodigeeau":"Prodige de l'Eau"
+    }
   },
-  "ITEM":{
-    "TypeDons":"Dons",
-    "TypeDefauts":"Défauts",
-    "TypeArmeprotection":"Arme & Protection",
-    "TypeEquipement":"Équipement",
-    "TypeProdigeterre":"Prodige de la Terre",
-    "TypeProdigeair":"Prodige de l'Air",
-    "TypeProdigeeau":"Prodige de l'Eau"
-  },
-
   "AQUABLUE": {
     "Nom":"Nom",
     "Richesse":"Richesse",
@@ -62,7 +63,7 @@
               "ProdigeTerre":"Prodiges de Terre"
             }
           }
-          
+
         }
       },
       "MENTAL":{
@@ -92,7 +93,7 @@
               "Meditation":"Méditation"
             }
           }
-          
+
         }
       },
       "SOCIAL":{
@@ -122,7 +123,7 @@
               "Seduction":"Séduction"
             }
           }
-          
+
         }
       }
     },
