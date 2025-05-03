@@ -2,7 +2,7 @@
   "id": "aquablue",
   "title": "Aquablue",
   "description": "Une implémentation officielle, supportée par l'éditeur, pour le jeu Aquablue.",
-  "version": "1.1.0",
+  "version": "#{VERSION}#",
   "esmodules": [
     "module/aquablue.mjs"
   ],
