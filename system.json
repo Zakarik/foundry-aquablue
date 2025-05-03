@@ -90,15 +90,32 @@
       "flags": {}
     }
   ],
-  "compatibility": {
-    "minimum": "11",
-    "verified": "12"
+  "documentTypes": {
+    "Actor": {
+      "pj": {},
+      "pnj":{}
+    },
+    "Item":{
+      "dons":{},
+      "defauts":{},
+      "equipement":{},
+      "armeprotection":{},
+      "prodigeterre":{},
+      "prodigeair":{},
+      "prodigeeau":{}
+    }
   },
-  "gridDistance": 5,
-  "gridUnits": "m",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "13"
+  },
+  "grid":{
+    "distance":5,
+    "unit":"m"
+  },
   "primaryTokenAttribute": "energie",
-  "url": "https://github.com/Zakarik/foundry-aquablue",
-  "manifest": "https://raw.githubusercontent.com/Zakarik/foundry-aquablue/main/system.json",
-  "download": "https://github.com/Zakarik/foundry-aquablue/archive/refs/tags/1.1.0.zip",
+  "url": "#{URL}#",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
   "changelog": "https://raw.githubusercontent.com/Zakarik/foundry-aquablue/main/changelog.md"
 }

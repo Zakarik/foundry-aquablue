@@ -1,3 +1,8 @@
+# Version 1.2.0
+Compatibilité avec la V13.
+- Correction d'un bug ne mettant pas à jour les PE de prodige.
+- Correction de divers bug avec les jets de dés ne fonctionnant plus.
+
 # Version 1.1.0
 Compatibilité avec la V12.
 

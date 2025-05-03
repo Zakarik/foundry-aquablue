@@ -8,6 +8,7 @@ export const preloadHandlebarsTemplates = async function() {
   // Define template paths to load
   const templatePaths = [
     // Attribute list partial.
+    'systems/aquablue/templates/dice/roll.html',
     /*"systems/aquablue/templates/parts/sheet-attributes.html",
     "systems/aquablue/templates/parts/sheet-groups.html"*/
   ];

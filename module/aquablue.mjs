@@ -10,9 +10,15 @@ import { AquablueDefautsSheet } from "./sheets/items/defauts-sheet.mjs";
 import { AquablueEquipementSheet } from "./sheets/items/equipement-sheet.mjs";
 import { AquablueArmeProtectionSheet } from "./sheets/items/armeprotection-sheet.mjs";
 import { AquablueProdigeSheet } from "./sheets/items/prodige-sheet.mjs";
+// Import models classes
+import { PersonnageDataModel } from "./models/actors/personnage-data-model.mjs";
+import { ArmeProtectionDataModel } from "./models/items/armeprotection-data-model.mjs";
+import { BaseDataModel } from "./models/items/base-data-model.mjs";
+import { ProdigeDataModel } from "./models/items/prodige-data-model.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { AQUABLUE } from "./helpers/config.mjs";
+import HooksAquablue from "./hooks.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -51,24 +57,38 @@ Hooks.once('init', async function() {
   };
 
   // Define custom Roll class
-  CONFIG.Dice.rolls.unshift(RollAquablue);
+  //CONFIG.Dice.rolls.unshift(RollAquablue);
 
   // Define custom Document classes
   CONFIG.Actor.documentClass = AquablueActor;
   CONFIG.Item.documentClass = AquablueItem;
   CONFIG.Combat.documentClass = AquablueCombat;
 
+  CONFIG.Actor.dataModels = {
+    pj:PersonnageDataModel,
+    pnj:PersonnageDataModel,
+  };
+  CONFIG.Item.dataModels = {
+    dons:BaseDataModel,
+    defauts:BaseDataModel,
+    equipement:BaseDataModel,
+    armeprotection:ArmeProtectionDataModel,
+    prodigeterre:ProdigeDataModel,
+    prodigeair:ProdigeDataModel,
+    prodigeeau:ProdigeDataModel,
+  };
+
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Items.unregisterSheet("core", ItemSheet);
 
-  Actors.registerSheet("aquablue", AquablueActorSheet, { 
+  Actors.registerSheet("aquablue", AquablueActorSheet, {
     types: ["pj"],
-    makeDefault: true 
+    makeDefault: true
   });
-  Actors.registerSheet("aquablue", AquablueActorSheet, { 
+  Actors.registerSheet("aquablue", AquablueActorSheet, {
     types: ["pnj"],
-    makeDefault: true 
+    makeDefault: true
   });
 
   Items.registerSheet("aquablue", AquablueDonsSheet, {
@@ -114,6 +134,8 @@ Hooks.once('init', async function() {
   Handlebars.registerHelper('autre', function (value) {
     return value === "autre";
   });
+  console.warn('test');
+  HooksAquablue.init();
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
@@ -134,11 +156,11 @@ async function createMacro(data, slot) {
 
   let img = "";
 
-  if(type === "terre" || type === "air" || type === "eau") { 
+  if(type === "terre" || type === "air" || type === "eau") {
     if(data.itemId != 0) {
       const item = game.actors.get(data.actorId).items.find(i => i.id === data.itemId);
       img = item.img;
-    } 
+    }
   } else {
     img = "systems/aquablue/assets/icons/D6Black.svg";
   }
@@ -176,7 +198,7 @@ function RollAquablueMacro(id, type, isProdige, label, itemId) {
   let rollAttribute = 0
   let maitrise = "";
 
-  if(isProdige) { 
+  if(isProdige) {
     switch(type) {
       case "terre":
         rollAttribute = +data.maitrises.physique.value;
@@ -189,18 +211,18 @@ function RollAquablueMacro(id, type, isProdige, label, itemId) {
         break;
     }
   }
-  else { 
-    rollAttribute = data.maitrises[type].value; 
+  else {
+    rollAttribute = data.maitrises[type].value;
 
     switch(type) {
       case "physique":
         maitrise = "PHYSIQUE";
         break;
-  
+
       case "mental":
         maitrise = "MENTAL";
         break;
-  
+
       case "social":
         maitrise = "SOCIAL";
         break;

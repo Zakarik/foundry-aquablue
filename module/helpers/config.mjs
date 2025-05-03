@@ -4,6 +4,26 @@ export const AQUABLUE = {};
  * The set of Ability Scores used within the sytem.
  * @type {Object}
  */
+ AQUABLUE.LIST = {};
+
+ AQUABLUE.LIST.maitrise = {
+   physique:['aventure', 'combat', 'savoirFaire'],
+   mental:['sagesse', 'technique', 'volonte'],
+   social:['ame', 'art', 'charisme'],
+ };
+
+ AQUABLUE.LIST.competence = {
+   aventure:['athletisme', 'plongee', 'survie'],
+   combat:['armeDistance', 'combatSubaquatique', 'corpsACorps'],
+   savoirFaire:['artisanat', 'chassePeche', 'prodigeTerre'],
+   sagesse:['erudition', 'medecine', 'prodigeAir'],
+   technique:['astres', 'pilotage', 'technologie'],
+   volonte:['discussion', 'investigation', 'meditation'],
+   ame:['chamanisme', 'contacts', 'empathie'],
+   art:['larcin', 'performance', 'prodigeEau'],
+   charisme:['commandement', 'dressage', 'seduction'],
+ }
+
  AQUABLUE.maîtrises = {
     "physique": "AQUABLUE.MAÎTRISE.PHYSIQUE.Nom",
     "mental": "AQUABLUE.MAÎTRISE.MENTAL.Nom",

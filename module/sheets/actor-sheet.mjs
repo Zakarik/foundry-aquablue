@@ -37,6 +37,8 @@ export class AquablueActorSheet extends ActorSheet {
 
     context.systemData = context.data.system;
 
+    console.warn(context);
+
     return context;
   }
 
@@ -217,36 +219,27 @@ export class AquablueActorSheet extends ActorSheet {
         button1: {
           label: game.i18n.localize("AQUABLUE.ROLL.DIALOG.Valider"),
           callback: async (html) => {
+            const roll = await new game.aquablue.RollAquablue(this.actor);
             const rollType = +html.find("select#typeRoll").val();
-            let title;
-            let rollValue;
+            roll.difficulte = rollAttribute;
 
             switch(rollType) {
               case 1:
-                rollValue = `4D6kl3cs<=${rollAttribute}`;
-                title = game.i18n.localize(`AQUABLUE.ROLL.TYPE.${maitrise}.AvecAvantage`);
+                await roll.doRoll('4D6kl3');
+                roll.label = game.i18n.localize(`AQUABLUE.ROLL.TYPE.${maitrise}.AvecAvantage`);
                 break;
 
               case 2:
-                rollValue = `4D6kh3cs<=${rollAttribute}`;
-                title = game.i18n.localize(`AQUABLUE.ROLL.TYPE.${maitrise}.AvecDesavantage`);
+                await roll.doRoll('4D6kh3');
+                roll.label = game.i18n.localize(`AQUABLUE.ROLL.TYPE.${maitrise}.AvecDesavantage`);
                 break;
 
               default:
-                rollValue = `3D6cs<=${rollAttribute}`;
-                title = game.i18n.localize(`AQUABLUE.ROLL.TYPE.${maitrise}.Normal`);
+                await roll.doRoll('3D6');
+                roll.label = game.i18n.localize(`AQUABLUE.ROLL.TYPE.${maitrise}.Normal`);
                 break;
             }
-            const roll = await new game.aquablue.RollAquablue(rollValue, this.actor.system);
-
-            roll.aquablue.label = title;
-            await roll.toMessage({
-              speaker: {
-              actor: this.actor?.id || null,
-              token: this.actor?.token?.id || null,
-              alias: this.actor?.name || null,
-              }
-            });
+            roll.sendMsg();
           },
           icon: `<i class="fas fa-check"></i>`
         },
@@ -264,6 +257,7 @@ export class AquablueActorSheet extends ActorSheet {
     const dataset = element.dataset;
     const rollName = dataset.name;
     const rollAttr = dataset.type;
+    const data = this.actor.system;
     const rollDialog = `
       <select id="typeRoll" style="width: 100%;
       text-align: center;
@@ -277,13 +271,13 @@ export class AquablueActorSheet extends ActorSheet {
 
     switch(rollAttr) {
       case "terre":
-        prodigeValue = +this.getData().systemData.maitrises.physique.value;
+        prodigeValue = +data.maitrises.physique.value;
         break;
       case "air":
-        prodigeValue = +this.getData().systemData.maitrises.mental.value;
+        prodigeValue = +data.maitrises.mental.value;
         break;
       case "eau":
-        prodigeValue = +this.getData().systemData.maitrises.social.value;
+        prodigeValue = +data.maitrises.social.value;
         break;
     }
 
@@ -295,38 +289,32 @@ export class AquablueActorSheet extends ActorSheet {
           label: game.i18n.localize("AQUABLUE.ROLL.DIALOG.Valider"),
           callback: async (html) => {
             const rollType = +html.find("select#typeRoll").val();
+            const roll = await new game.aquablue.RollAquablue(this.actor);
+            roll.difficulte = prodigeValue;
             let title;
             let rollValue;
 
             switch(rollType) {
               case 1:
-                rollValue = `4D6kl3cs<=${prodigeValue}`;
+                rollValue = `4D6kl3`;
                 title = game.i18n.localize(`AQUABLUE.ROLL.TYPE.PRODIGE.JetDe`)+" "+rollName+" "+game.i18n.localize(`AQUABLUE.ROLL.TYPE.PRODIGE.AvecAvantage`);
                 break;
 
               case 2:
-                rollValue = `4D6kh3cs<=${prodigeValue}`;
+                rollValue = `4D6kh3`;
                 title = game.i18n.localize(`AQUABLUE.ROLL.TYPE.PRODIGE.JetDe`)+" "+rollName+" "+game.i18n.localize(`AQUABLUE.ROLL.TYPE.PRODIGE.AvecDesavantage`);
                 break;
 
               default:
-                rollValue = `3D6cs<=${prodigeValue}`;
+                rollValue = `3D6`;
                 title = game.i18n.localize(`AQUABLUE.ROLL.TYPE.PRODIGE.JetDe`)+" "+rollName;
                 break;
             }
+            roll.label = title;
+            roll.chaman = this._isChamane();
+            await roll.doRoll(rollValue);
 
-            const roll = await new game.aquablue.RollAquablue(rollValue, this.actor.system);
-
-            roll.aquablue.label = title;
-            if(this._isChamane()) { roll.aquablue.isChamane = true; }
-
-            await roll.toMessage({
-              speaker: {
-              actor: this.actor?.id || null,
-              token: this.actor?.token?.id || null,
-              alias: this.actor?.name || null,
-              }
-            });
+            roll.sendMsg();
           },
           icon: `<i class="fas fa-check"></i>`
         },
@@ -442,7 +430,7 @@ export class AquablueActorSheet extends ActorSheet {
   }
 
   _isChamane() {
-    const data = this.getData().systemData;
+    const data = this.actor.system;
     const prodigeTerre = data.maitrises.physique.competences.savoirFaire.liste.prodigeTerre;
     const prodigeAir = data.maitrises.mental.competences.sagesse.liste.prodigeAir;
     const prodigeEau = data.maitrises.social.competences.art.liste.prodigeEau;
