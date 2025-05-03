@@ -1,3 +1,6 @@
+# Version 1.2.1
+- Correction d'un problème de version.
+
 # Version 1.2.0
 Compatibilité avec la V13.
 - Correction d'un bug ne mettant pas à jour les PE de prodige.
