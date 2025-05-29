@@ -125,6 +125,7 @@ export class RollAquablue {
             rollMode:chatRollMode,
         };
 
+        ChatMessage.applyRollMode(chatData, chatRollMode);
         const msg = await ChatMessage.create(chatData);
     }
 
