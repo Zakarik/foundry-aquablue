@@ -13,7 +13,7 @@ export class AquablueActor extends Actor {
     if (data.img === undefined) {
         data.img = "icons/svg/mystery-man-black.svg";
     }
-    await super.create(data, options);
+    return await super.create(data, options);
   }
 
   /** @override */

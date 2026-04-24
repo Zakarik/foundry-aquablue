@@ -213,7 +213,7 @@ export class AquablueActorSheet extends ActorSheet {
     }
 
     new Dialog({
-      title: game.i18n.localize(`AQUABLUE.maitrise.${maitrise}.Nom`)+" : "+game.i18n.localize("AQUABLUE.ROLL.DIALOG.Label"),
+      title: game.i18n.localize(`AQUABLUE.MAÎTRISE.${maitrise}.Nom`)+" : "+game.i18n.localize("AQUABLUE.ROLL.DIALOG.Label"),
       content: rollDialog,
       buttons: {
         button1: {
@@ -382,7 +382,7 @@ export class AquablueActorSheet extends ActorSheet {
     // Get the type of item to create.
     const type = header.dataset.type;
     // Grab any data associated with this control.
-    const data = duplicate(header.dataset);
+    const data = foundry.utils.duplicate(header.dataset);
     // Initialize a default name.
     const name = `${game.i18n.localize(`TYPES.Item.${type}`)}`;
     // Prepare the item object.

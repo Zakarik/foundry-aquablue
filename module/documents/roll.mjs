@@ -296,8 +296,8 @@ export class RollAquablue {
     toJSON() {
         const json = super.toJSON();
 
-        json.data = foundry.utils.duplicate(this.data);
-        json.aquablue = foundry.utils.duplicate(this.aquablue);
+        json.data = foundry.utils.foundry.utils.duplicate(this.data);
+        json.aquablue = foundry.utils.foundry.utils.duplicate(this.aquablue);
 
         return json;
     }

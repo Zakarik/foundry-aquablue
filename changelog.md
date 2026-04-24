@@ -1,5 +1,8 @@
+# Version 1.3.0
+- Compatibilité V14.
+
 # Version 1.2.2
-- Correction d'un devant être privés qui n'étaient pas envoyés en privé.
+- Correction d'un jet devant être privés qui n'étaient pas envoyés en privé.
 
 # Version 1.2.1
 - Correction d'un problème de version.
